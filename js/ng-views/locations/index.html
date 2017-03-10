@@ -1,0 +1,5 @@
+<h2>All Locations</h2>
+
+<div ng-repeat="location in vm.locations">
+  <a ui-sref="locationShow({id: location.id})">{{location.city}}, {{location.state}}</a>
+</div>
