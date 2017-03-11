@@ -15,40 +15,16 @@ angular
     "$stateProvider",
     RouterFunction
   ])
-  // For when we have Rails setup
   .factory("LocationFactory", [
     "$resource",
     LocationFactoryFunction
   ])
-  .controller("LocationIndexController", [
-    "$stateParams",
-    "$state",
-    // Needed for rails
-    "LocationFactory",
-    LocationIndexControllerFunction
-  ])
-  .controller("LocationNewController", [
-    "$stateParams",
-    "$state",
-    // Needed for rails
-    "LocationFactory",
-    LocationNewControllerFunction
-  ])
-  .controller("LocationEditController", [
-    "$stateParams",
-    "$state",
-    // Needed for rails
-    "LocationFactory",
-    LocationEditControllerFunction
-  ])
-  .controller("LocationShowController", [
-    "$stateParams",
-    "$state",
-    // Needed for rails
-    "LocationFactory",
-    LocationShowControllerFunction
+  .factory("EventFactory", [
+    "$resource",
+    EventFactoryFunction
   ])
 
+// Routes
 function RouterFunction($stateProvider){
   $stateProvider
     .state("locationIndex", {
@@ -77,14 +53,53 @@ function RouterFunction($stateProvider){
     })
 }
 
-// Needed for rails
+// Factory Functions
+
 function LocationFactoryFunction($resource) {
   return $resource("http://localhost:3000/locations/:id", {}, {
     update: { method: "PUT" }
   })
 }
 
+function EventFactoryFunction($resource) {
+  return $resource("http://localhost:3000/events/:id", {}, {
+    update: { method: "PUT" }
+  })
+}
 
+// Separating our controllers by data model since this might get long and ugly.
+// Location Controllers
+angular.module("touristapp")
+  .controller("LocationIndexController", [
+    "$stateParams",
+    "$state",
+    "LocationFactory",
+    LocationIndexControllerFunction
+  ])
+  .controller("LocationNewController", [
+    "$stateParams",
+    "$state",
+    "LocationFactory",
+    LocationNewControllerFunction
+  ])
+  .controller("LocationEditController", [
+    "$stateParams",
+    "$state",
+    "LocationFactory",
+    LocationEditControllerFunction
+  ])
+  .controller("LocationShowController", [
+    "$stateParams",
+    "$state",
+    "LocationFactory",
+    "EventFactory",
+    LocationShowControllerFunction
+  ])
+
+
+
+
+// Location Controller Functions
 function LocationIndexControllerFunction($stateParams, $state, LocationFactory) {
   this.locations = LocationFactory.query();
 }
@@ -112,6 +127,9 @@ function LocationEditControllerFunction($stateParams, $state, LocationFactory) {
   }
 }
 
-function LocationShowControllerFunction($stateParams, $state, LocationFactory) {
+function LocationShowControllerFunction($stateParams, $state, LocationFactory, EventFactory) {
   this.location = LocationFactory.get({id: $stateParams.id});
+  this.events = EventFactory.query();
 }
+
+// Event Controller Functions

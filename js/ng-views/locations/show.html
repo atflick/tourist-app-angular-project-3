@@ -2,3 +2,7 @@
 
 
 <a ui-sref="locationEdit({id: vm.location.id})">Edit</a>
+
+<div ng-repeat="event in vm.events | filter: {location_id: vm.location.id}">
+  <h3>{{event.name}}</h3>
+</div>
