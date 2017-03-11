@@ -1,12 +1,10 @@
 <h2>Add new location</h2>
 
 <form ng-submit="vm.addLocation()">
-  <!--remove once rails connected  -->
-  <input type="text" placeholder="Id" ng-model="vm.newLocation.id">
-  <!--  -->
-  <input type="text" placeholder="City" ng-model="vm.newLocation.city">
-  <input type="text" placeholder="State" ng-model="vm.newLocation.state">
-  <input type="text" placeholder="Country" ng-model="vm.newLocation.country">
-  <input type="text" placeholder="Image" ng-model="vm.newLocation.img_url">
+
+  <input type="text" placeholder="City" ng-model="vm.location.city">
+  <input type="text" placeholder="State" ng-model="vm.location.state">
+  <input type="text" placeholder="Country" ng-model="vm.location.country">
+  <input type="text" placeholder="Image" ng-model="vm.location.img_url">
   <button type="submit">Add Location</button>
 </form>

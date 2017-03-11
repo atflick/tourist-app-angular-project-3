@@ -1,8 +1,8 @@
-let locations = [
-  {id: 1, city: "Washington", state: "DC", country: "USA", img_url: "", area: ""},
-  {id: 2, city: "New York City", state: "NY", country: "USA", img_url: "", area: ""},
-  {id: 3, city: "Boston", state: "MA", country: "USA", img_url: "", area: ""}
-]
+// let locations = [
+//   {id: 1, city: "Washington", state: "DC", country: "USA", img_url: "", area: ""},
+//   {id: 2, city: "New York City", state: "NY", country: "USA", img_url: "", area: ""},
+//   {id: 3, city: "Boston", state: "MA", country: "USA", img_url: "", area: ""}
+// ]
 
 
 
@@ -16,36 +16,36 @@ angular
     RouterFunction
   ])
   // For when we have Rails setup
-  // .factory("LocationFactory", [
-  //   "$resource",
-  //   LocationFactoryFunction
-  // ])
+  .factory("LocationFactory", [
+    "$resource",
+    LocationFactoryFunction
+  ])
   .controller("LocationIndexController", [
     "$stateParams",
     "$state",
     // Needed for rails
-    // "LocationFactory",
+    "LocationFactory",
     LocationIndexControllerFunction
   ])
   .controller("LocationNewController", [
     "$stateParams",
     "$state",
     // Needed for rails
-    // "LocationFactory",
+    "LocationFactory",
     LocationNewControllerFunction
   ])
   .controller("LocationEditController", [
     "$stateParams",
     "$state",
     // Needed for rails
-    // "LocationFactory",
+    "LocationFactory",
     LocationEditControllerFunction
   ])
   .controller("LocationShowController", [
     "$stateParams",
     "$state",
     // Needed for rails
-    // "LocationFactory",
+    "LocationFactory",
     LocationShowControllerFunction
   ])
 
@@ -78,55 +78,40 @@ function RouterFunction($stateProvider){
 }
 
 // Needed for rails
-// function LocationFactoryFunction($resource) {
-//   return $resource("http://localhost:3000/locations/:id", {}, {
-//     update: { method: "PUT" }
-//   })
-// }
-
-
-function LocationIndexControllerFunction($stateParams, $state) {
-  this.locations = locations;
-
-  // Rails
-  // this.locations = LocationFactory.query();
+function LocationFactoryFunction($resource) {
+  return $resource("http://localhost:3000/locations/:id", {}, {
+    update: { method: "PUT" }
+  })
 }
 
-function LocationNewControllerFunction($stateParams, $state) {
-  this.newLocation = {};
-  this.addLocation = function() {
-    locations.push(this.newLocation);
-    $state.go("locationIndex");
-    console.log(locations);
+
+function LocationIndexControllerFunction($stateParams, $state, LocationFactory) {
+  this.locations = LocationFactory.query();
+}
+
+function LocationNewControllerFunction($stateParams, $state, LocationFactory) {
+  this.location = new LocationFactory();
+  this.addLocation = function(){
+    this.location.$save(function(location){
+      $state.go("locationShow", {id: location.id});
+    })
   }
-
-  // Rails
-  // this.location = new LocationFactory();
-  // this.addLocation = function(){
-  //   this.location.$save(function(location){
-  //     $state.go("locationShow", {id: location.id});
-  //   })
-  // }
 }
 
-function LocationEditControllerFunction($stateParams, $state) {
-  this.location = locations[$stateParams.id - 1];
-
-  // Rails
-  // this.location = LocationFactory.get({id: $stateParams.id});
-  // this.updateLocation = function(){
-  //   this.location.$update({id: $stateParams.id})
-  // }
-  // this.deleteLocation = function(){
-  //   this.location.$delete({id: $stateParams.id}, function(){
-  //     $state.go("locationIndex");
-  //   })
-  // }
+function LocationEditControllerFunction($stateParams, $state, LocationFactory) {
+  this.location = LocationFactory.get({id: $stateParams.id});
+  this.updateLocation = function(){
+    this.location.$update({id: $stateParams.id}, function(){
+      $state.go("locationShow", {id: $stateParams.id});
+    });
+  }
+  this.deleteLocation = function(){
+    this.location.$delete({id: $stateParams.id}, function(){
+      $state.go("locationIndex");
+    })
+  }
 }
 
-function LocationShowControllerFunction($stateParams, $state) {
-  this.location = locations[$stateParams.id - 1];
-
-  // Rails
-  // this.location = LocationFactory.get({id: $stateParams.id});
+function LocationShowControllerFunction($stateParams, $state, LocationFactory) {
+  this.location = LocationFactory.get({id: $stateParams.id});
 }
