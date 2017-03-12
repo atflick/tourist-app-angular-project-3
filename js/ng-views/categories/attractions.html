@@ -1,6 +1,7 @@
-<h2>All Events</h2>
+<h1>{{vm.location.city}}</h1>
+<h2>{{vm.event.category}}</h2>
 
-<div class="event_index" ng-repeat="event in vm.events">
+<div class="event" class="attractions" ng-repeat="event in vm.events | filter: {location_id: vm.location.id, category: vm.event.category: "attractions"}">
   <h2><a ui-sref="eventShow({id: location.id})">{{event.name}}</a></h2>
     <p>{{event.date}}, {{event.time}}</p>
     <p>About:{{event.description}}</p>
