@@ -1,0 +1,7 @@
+<h2>All Events</h2>
+
+<div ng-repeat="event in vm.events">
+  <a ui-sref="eventShow({id: location.id})">{{event.name}}, {{event.date}}, {{event.time}}, {{event.description}},{{event.rating}},</a>
+</div>
+
+<button ui-sref="eventNew">Add an Event</a>

@@ -1,0 +1,20 @@
+<h2>Edit This Event</h2>
+
+<form ng-submit="vm.updateEvent()">
+
+  <input type="text" placeholder="Name" ng-model="vm.event.name">
+  <input type="text" placeholder="Entertainment, Dining, etc." ng-model="vm.event.category">
+  <input type="text" placeholder="Description" ng-model="vm.event.description">
+  <input type="text" placeholder="Date" ng-model="vm.event.date">
+  <input type="text" placeholder="Time" ng-model="vm.event.time">
+  <input type="text" placeholder="Address" ng-model="vm.event.address">
+  <input type="text" placeholder="###-###-####" ng-model="vm.event.phone_number">
+  <input type="text" placeholder="Rating 1-5" ng-model="vm.event.rating">
+  <input type="text" placeholder="Event Website" ng-model="vm.event.website_url">
+  <input type="text" placeholder="GoogleMaps Link" ng-model="vm.event.map_url">
+  <input type="text" placeholder="Image Link" ng-model="vm.event.img_url">
+
+  <button type="submit">Update Event</button>
+</form>
+
+<button ng-click="vm.deleteEvent()">Delete</button>
