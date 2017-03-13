@@ -1,0 +1,68 @@
+// body {
+//   background-color: $dark-red;
+// }
+
+h2{
+ display: flex;
+ justify-content: center;
+}
+
+.Firstpics {
+   display: flex;
+   justify-content: center;
+   justify-content: space-around;
+   padding-bottom: 40px;
+   padding-left: 50px;
+
+}
+
+.Secondpics {
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  padding-bottom: 40px;
+  padding-left: 50px;
+
+}
+
+.Washington {
+  background-image: url("../img/locations/washdc.jpg");
+  background-size: cover;
+  height: 175px;
+  width: 150px;
+}
+
+.Newyork {
+  background-image: url("../img/locations/nyc.jpg");
+  background-size: cover;
+  height: 175px;
+  width: 150px;
+}
+
+.Boston {
+  background-image: url("../img/locations/boston.jpg");
+  background-size: cover;
+  height: 175px;
+  width: 150px;
+}
+
+.Sanfrancisco {
+  background-image: url("..img/locations/sanfran.jpg");
+  background-size: cover;
+  height: 175px;
+  width: 150px;
+}
+
+.Austin {
+  background-image: url("../img/locations/austin.jpg");
+  background-size: cover;
+  height: 175px;
+  width: 150px;
+}
+
+.Chicago {
+  background-image: url("../img/locations/chicago.jpg");
+  background-size: cover;
+  height: 175px;
+  width: 150px;
+}
