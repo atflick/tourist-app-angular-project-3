@@ -23,6 +23,10 @@ angular
     "$resource",
     EventFactoryFunction
   ])
+  .factory("PhotoFactory", [
+    "$resource",
+    PhotoFactoryFunction
+  ])
 
 // Routes
 function RouterFunction($stateProvider){
@@ -51,6 +55,24 @@ function RouterFunction($stateProvider){
       controller: "LocationShowController",
       controllerAs: "vm"
     })
+    .state("eventShow", {
+      url: "/locations/:id",
+      templateUrl: "js/ng-views/events/show.html",
+      controller: "EventShowController",
+      controllerAs: "vm"
+    })
+    .state("photosIndex", {
+      url: "/photos/:id",
+      templateUrl: "js/ng-views/photos/index.html",
+      controller: "PhotosIndexController",
+      controllerAs: "vm"
+    })
+    .state("photosShow", {
+      url: "/photos/show/:id",
+      templateUrl: "js/ng-views/photos/show.html",
+      controller: "PhotoShowontroller",
+      controllerAs: "vm"
+    })
 }
 
 // Factory Functions
@@ -63,6 +85,12 @@ function LocationFactoryFunction($resource) {
 
 function EventFactoryFunction($resource) {
   return $resource("http://localhost:3000/events/:id", {}, {
+    update: { method: "PUT" }
+  })
+}
+
+function PhotoFactoryFunction($resource) {
+  return $resource("http://localhost:3000/photos/:id", {}, {
     update: { method: "PUT" }
   })
 }
@@ -132,4 +160,39 @@ function LocationShowControllerFunction($stateParams, $state, LocationFactory, E
   this.events = EventFactory.query();
 }
 
+// Event Controllers
+angular.module("touristapp")
+  .controller("EventShowController", [
+    "$stateParams",
+    "$state",
+    "EventFactory",
+    EventShowControllerFunction
+  ])
+
 // Event Controller Functions
+
+
+// Photos Controllers
+angular.module("touristapp")
+  .controller("PhotosIndexController", [
+    "$stateParams",
+    "$state",
+    "PhotoFactory",
+    PhotosIndexControllerFunction
+  ])
+  .controller("PhotoShowController", [
+    "$stateParams",
+    "$state",
+    "PhotoFactory",
+    PhotoShowControllerFunction
+  ])
+
+// Photos Controller Functions
+
+function PhotosIndexControllerFunction($stateParams, $state, PhotoFactory) {
+  this.photos = PhotoFactory.query();
+}
+
+function PhotoShowControllerFunction($stateParams, $state, PhotoFactory) {
+  this.photo = PhotoFactory.get({id: $stateParams.id});
+}
