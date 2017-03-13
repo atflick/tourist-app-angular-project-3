@@ -252,8 +252,20 @@ angular.module("touristapp")
 // Photos Controller Functions
 function PhotosIndexControllerFunction($stateParams, $state, PhotoFactory) {
   this.photos = PhotoFactory.query();
+  this.event = $stateParams.id;
+  this.currentImage = {};
+  this.currentImageUrl = setUrl(this.currentImage.img_url)
+  this.setCurrentImage = function(photo) {
+    this.currentImage = photo;
+    this.currentImageUrl = setUrl(photo.img_url)
+    console.log(photo);
+  }
 }
 
 function PhotoShowControllerFunction($stateParams, $state, PhotoFactory) {
   this.photo = PhotoFactory.get({id: $stateParams.id})
+}
+
+function setUrl(url) {
+  return `url("${url}")`
 }

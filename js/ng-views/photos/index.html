@@ -1,3 +1,20 @@
 
 
 <h2>Photos Index</h2>
+
+
+<section class="centered-container">
+
+  <div class="current-image-box" ng-style="{'background-image' : vm.currentImageUrl}">
+
+    <!-- <img ng-src="{{vm.currentImage.img_url}}" alt=""> -->
+  </div>
+  <div class="current-image-info">
+    <h3>{{vm.currentImage.title}}</h3>
+    <h5>{{vm.currentImage.comment}}</h5>
+  </div>
+  <div class="image-slide-box">
+    <img ng-repeat="photo in vm.photos | filter: {event_id: vm.event}" ng-click="vm.setCurrentImage(photo)" ng-src="{{photo.img_url}}">
+  </div>
+
+</section>
