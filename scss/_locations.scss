@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // body {
 //   background-color: $dark-red;
 // }
@@ -65,4 +66,18 @@ h2{
   background-size: cover;
   height: 175px;
   width: 150px;
+=======
+.location {
+  width: 175px;
+  height: 175px;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+>>>>>>> 4a37a5e86ec9123b008ee562b72ccd49864a4247
 }

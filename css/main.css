@@ -1,55 +1,76 @@
-h2 {
-  display: flex;
-  justify-content: center; }
+/*
+Error: Invalid CSS after "...72ccd49864a4247": expected "{", was "}"
+        on line 83 of scss/_locations.scss
+        from line 8 of scss/main.scss
 
-.Firstpics {
-  display: flex;
-  justify-content: center;
-  justify-content: space-around;
-  padding-bottom: 40px;
-  padding-left: 50px; }
+78: .flex-container {
+79:   display: flex;
+80:   flex-direction: row;
+81:   flex-wrap: wrap;
+82: >>>>>>> 4a37a5e86ec9123b008ee562b72ccd49864a4247
+83: }
 
-.Secondpics {
-  display: flex;
-  justify-content: center;
-  justify-content: space-around;
-  padding-bottom: 40px;
-  padding-left: 50px; }
-
-.Washington {
-  background-image: url("../img/locations/washdc.jpg");
-  background-size: cover;
-  height: 175px;
-  width: 150px; }
-
-.Newyork {
-  background-image: url("../img/locations/nyc.jpg");
-  background-size: cover;
-  height: 175px;
-  width: 150px; }
-
-.Boston {
-  background-image: url("../img/locations/boston.jpg");
-  background-size: cover;
-  height: 175px;
-  width: 150px; }
-
-.Sanfrancisco {
-  background-image: url("..img/locations/sanfran.jpg");
-  background-size: cover;
-  height: 175px;
-  width: 150px; }
-
-.Austin {
-  background-image: url("../img/locations/austin.jpg");
-  background-size: cover;
-  height: 175px;
-  width: 150px; }
-
-.Chicago {
-  background-image: url("../img/locations/chicago.jpg");
-  background-size: cover;
-  height: 175px;
-  width: 150px; }
-
-/*# sourceMappingURL=main.css.map */
+Backtrace:
+scss/_locations.scss:83
+scss/main.scss:8
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:1207:in `expected'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:1137:in `expected'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:1132:in `tok!'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:665:in `block'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:735:in `declaration_or_ruleset'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:685:in `block_child'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:677:in `block_contents'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:666:in `block'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:735:in `declaration_or_ruleset'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:685:in `block_child'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:677:in `block_contents'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:666:in `block'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:658:in `ruleset'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:684:in `block_child'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:677:in `block_contents'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:125:in `stylesheet'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:41:in `parse'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/engine.rb:406:in `_to_tree'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/engine.rb:312:in `to_tree'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:326:in `block in visit_import'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/stack.rb:88:in `block in with_import'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/stack.rb:88:in `with_import'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:325:in `visit_import'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/stack.rb:79:in `block in with_base'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/stack.rb:79:in `with_base'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:52:in `map'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:159:in `visit'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/engine.rb:381:in `_render_with_sourcemap'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/engine.rb:298:in `render_with_sourcemap'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:209:in `each'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:473:in `on_file_changed'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:331:in `block in watch'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/vendor/listen/lib/listen/listener.rb:252:in `on_change'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/vendor/listen/lib/listen/adapter.rb:254:in `report_changes'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/vendor/listen/lib/listen/adapter.rb:323:in `poll_changed_directories'
+/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"...72ccd49864a4247\": expected \"{\", was \"}\"\A         on line 83 of scss/_locations.scss\A         from line 8 of scss/main.scss\A \A 78: .flex-container {\A 79:   display: flex;\A 80:   flex-direction: row;\A 81:   flex-wrap: wrap;\A 82: >>>>>>> 4a37a5e86ec9123b008ee562b72ccd49864a4247\A 83: }"; }

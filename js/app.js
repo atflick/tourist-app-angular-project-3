@@ -169,6 +169,9 @@ angular.module("touristapp")
 // Location Controller Functions
 function LocationIndexControllerFunction($stateParams, $state, LocationFactory) {
   this.locations = LocationFactory.query();
+  this.setUrl = function(url) {
+    return `url("${url}")`
+  }
 }
 
 function LocationNewControllerFunction($stateParams, $state, LocationFactory) {
@@ -252,8 +255,20 @@ angular.module("touristapp")
 // Photos Controller Functions
 function PhotosIndexControllerFunction($stateParams, $state, PhotoFactory) {
   this.photos = PhotoFactory.query();
+  this.event = $stateParams.id;
+  this.currentImage = {};
+  this.currentImageUrl = setUrl(this.currentImage.img_url)
+  this.setCurrentImage = function(photo) {
+    this.currentImage = photo;
+    this.currentImageUrl = setUrl(photo.img_url)
+    console.log(photo);
+  }
 }
 
 function PhotoShowControllerFunction($stateParams, $state, PhotoFactory) {
   this.photo = PhotoFactory.get({id: $stateParams.id})
+}
+
+function setUrl(url) {
+  return `url("${url}")`
 }
