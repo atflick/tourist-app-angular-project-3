@@ -55,8 +55,26 @@ function RouterFunction($stateProvider){
       controller: "LocationShowController",
       controllerAs: "vm"
     })
+    .state("eventIndex", {
+      url: "/events",
+      templateUrl: "js/ng-views/events/index.html",
+      controller: "EventIndexController",
+      controllerAs: "vm"
+    })
+    .state("eventNew", {
+      url: "/events/new",
+      templateUrl: "js/ng-views/events/new.html",
+      controller: "EventNewController",
+      controllerAs: "vm"
+    })
+    .state("eventEdit", {
+      url: "/events/:id/edit",
+      templateUrl: "js/ng-views/events/edit.html",
+      controller: "EventEditController",
+      controllerAs: "vm"
+    })
     .state("eventShow", {
-      url: "/locations/:id",
+      url: "/events/:id",
       templateUrl: "js/ng-views/events/show.html",
       controller: "EventShowController",
       controllerAs: "vm"
@@ -71,10 +89,8 @@ function RouterFunction($stateProvider){
       url: "/photos/show/:id",
       templateUrl: "js/ng-views/photos/show.html",
       controller: "PhotoShowontroller",
-      controllerAs: "vm"
     })
-}
-
+  }
 // Factory Functions
 
 function LocationFactoryFunction($resource) {
@@ -122,9 +138,32 @@ angular.module("touristapp")
     "LocationFactory",
     "EventFactory",
     LocationShowControllerFunction
+  ])  // Event Controllers
+  .controller("EventIndexController", [
+    "$stateParams",
+    "$state",
+    "EventFactory",
+    EventIndexControllerFunction
   ])
-
-
+  .controller("EventNewController", [
+    "$stateParams",
+    "$state",
+    "EventFactory",
+    EventNewControllerFunction
+  ])
+  .controller("EventEditController", [
+    "$stateParams",
+    "$state",
+    "EventFactory",
+    EventEditControllerFunction
+  ])
+  .controller("EventShowController", [
+    "$stateParams",
+    "$state",
+    "LocationFactory",
+    "EventFactory",
+    EventShowControllerFunction
+  ])
 
 
 // Location Controller Functions
@@ -160,17 +199,40 @@ function LocationShowControllerFunction($stateParams, $state, LocationFactory, E
   this.events = EventFactory.query();
 }
 
-// Event Controllers
-angular.module("touristapp")
-  .controller("EventShowController", [
-    "$stateParams",
-    "$state",
-    "EventFactory",
-    EventShowControllerFunction
-  ])
 
 // Event Controller Functions
 
+function EventIndexControllerFunction($stateParams, $state, EventFactory) {
+  this.events = EventFactory.query();
+}
+
+function EventNewControllerFunction($stateParams, $state, EventFactory) {
+  this.event = new EventFactory();
+  this.addEvent = function(){
+    this.event.$save(function(event){
+      $state.go("eventShow", {id: location.id});
+    })
+  }
+}
+
+function EventEditControllerFunction($stateParams, $state, EventFactory) {
+  this.event = EventFactory.get({id: $stateParams.id});
+  this.updateEvent = function(){
+    this.event.$update({id: $stateParams.id}, function(){
+      $state.go("eventShow", {id: $stateParams.id});
+    });
+  }
+  this.deleteEvent = function(){
+    this.event.$delete({id: $stateParams.id}, function(){
+      $state.go("eventIndex");
+    })
+  }
+}
+
+function EventShowControllerFunction($stateParams, $state, LocationFactory, EventFactory) {
+  this.location = LocationFactory.get({id: $stateParams.id});
+  this.events = EventFactory.query();
+}
 
 // Photos Controllers
 angular.module("touristapp")
@@ -188,11 +250,10 @@ angular.module("touristapp")
   ])
 
 // Photos Controller Functions
-
 function PhotosIndexControllerFunction($stateParams, $state, PhotoFactory) {
   this.photos = PhotoFactory.query();
 }
 
 function PhotoShowControllerFunction($stateParams, $state, PhotoFactory) {
-  this.photo = PhotoFactory.get({id: $stateParams.id});
+  this.photo = PhotoFactory.get({id: $stateParams.id})
 }
