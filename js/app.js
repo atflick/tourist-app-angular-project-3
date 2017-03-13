@@ -51,6 +51,30 @@ function RouterFunction($stateProvider){
       controller: "LocationShowController",
       controllerAs: "vm"
     })
+    .state("eventIndex", {
+      url: "/events",
+      templateUrl: "js/ng-views/events/index.html",
+      controller: "EventIndexController",
+      controllerAs: "vm"
+    })
+    .state("eventNew", {
+      url: "/events/new",
+      templateUrl: "js/ng-views/events/new.html",
+      controller: "EventNewController",
+      controllerAs: "vm"
+    })
+    .state("eventEdit", {
+      url: "/events/:id/edit",
+      templateUrl: "js/ng-views/events/edit.html",
+      controller: "EventEditController",
+      controllerAs: "vm"
+    })
+    .state("eventShow", {
+      url: "/events/:id",
+      templateUrl: "js/ng-views/events/show.html",
+      controller: "EventShowController",
+      controllerAs: "vm"
+    })
 }
 
 // Factory Functions
@@ -94,9 +118,32 @@ angular.module("touristapp")
     "LocationFactory",
     "EventFactory",
     LocationShowControllerFunction
+  ])///////// Event Controllers
+  .controller("EventIndexController", [
+    "$stateParams",
+    "$state",
+    "EventFactory",
+    EventIndexControllerFunction
   ])
-
-
+  .controller("EventNewController", [
+    "$stateParams",
+    "$state",
+    "EventFactory",
+    EventNewControllerFunction
+  ])
+  .controller("EventEditController", [
+    "$stateParams",
+    "$state",
+    "EventFactory",
+    EventEditControllerFunction
+  ])
+  .controller("EventShowController", [
+    "$stateParams",
+    "$state",
+    "LocationFactory",
+    "EventFactory",
+    EventShowControllerFunction
+  ])
 
 
 // Location Controller Functions
@@ -133,3 +180,35 @@ function LocationShowControllerFunction($stateParams, $state, LocationFactory, E
 }
 
 // Event Controller Functions
+
+function EventIndexControllerFunction($stateParams, $state, EventFactory) {
+  this.events = EventFactory.query();
+}
+
+function EventNewControllerFunction($stateParams, $state, EventFactory) {
+  this.event = new EventFactory();
+  this.addEvent = function(){
+    this.event.$save(function(event){
+      $state.go("eventShow", {id: location.id});
+    })
+  }
+}
+
+function EventEditControllerFunction($stateParams, $state, EventFactory) {
+  this.event = EventFactory.get({id: $stateParams.id});
+  this.updateEvent = function(){
+    this.event.$update({id: $stateParams.id}, function(){
+      $state.go("eventShow", {id: $stateParams.id});
+    });
+  }
+  this.deleteEvent = function(){
+    this.event.$delete({id: $stateParams.id}, function(){
+      $state.go("eventIndex");
+    })
+  }
+}
+
+function EventShowControllerFunction($stateParams, $state, LocationFactory, EventFactory) {
+  this.location = LocationFactory.get({id: $stateParams.id});
+  this.events = EventFactory.query();
+}
