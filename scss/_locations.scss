@@ -1,0 +1,13 @@
+.location {
+  width: 175px;
+  height: 175px;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

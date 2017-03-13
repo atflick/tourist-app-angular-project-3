@@ -169,6 +169,9 @@ angular.module("touristapp")
 // Location Controller Functions
 function LocationIndexControllerFunction($stateParams, $state, LocationFactory) {
   this.locations = LocationFactory.query();
+  this.setUrl = function(url) {
+    return `url("${url}")`
+  }
 }
 
 function LocationNewControllerFunction($stateParams, $state, LocationFactory) {
