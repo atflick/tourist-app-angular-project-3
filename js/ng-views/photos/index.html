@@ -1,13 +1,33 @@
-<section class="centered-container">
-  <h2>Photos Index</h2>
-
+<section class="centered-container center">
+  <h2>Photos for {{vm.event.name}}</h2>
   <div class="current-image-box" ng-style="{'background-image' : vm.currentImageUrl}">
+    <div class="default-image">
+      <h2>No Images</h2>
+      <h2>to Display</h2>
+    </div>
+  </div>
+  <div class="current-image-info flex-container">
+    <div class="flex-cell-3-4">
+      <h3>{{vm.currentImage.title}}</h3>
+      <h5>{{vm.currentImage.comment}}</h5>
+    </div>
+    <div class="flex-cell-1-4">
+      <button ng-click="imageEditActive = !imageEditActive">Edit</button>
+    </div>
+
+    <!-- Edit box that slides out when edit is clicked -->
+    <div class="current-image-edit" ng-class="{'current-image-edit-active': imageEditActive}">
+      <input type="text" placeholder="Title" ng-model="vm.currentImage.title"  ng-change="vm.update()">
+      <input type="text" placeholder="Comment" ng-model="vm.currentImage.comment" ng-change="vm.update()">
+      <input type="text" placeholder="Photo URL" ng-model="vm.currentImage.img_url" ng-change="vm.update()">
+      <div>
+        <button ng-click="imageEditActive = !imageEditActive">Done</button>
+        <button ng-click="vm.delete()">Delete</button>
+      </div>
+    </div>
 
   </div>
-  <div class="current-image-info">
-    <h3>{{vm.currentImage.title}}</h3>
-    <h5>{{vm.currentImage.comment}}</h5>
-  </div>
+  <!-- Thumbnail previews of images get displayed here -->
   <div class="image-slide-box">
     <img ng-repeat="photo in vm.photos | filter: {event_id: vm.event}" ng-click="vm.setCurrentImage(photo)" ng-src="{{photo.img_url}}">
   </div>
@@ -33,3 +53,8 @@
     <img class="close-form" src="img/x-icon.png" ng-click="newPhotoActive = !newPhotoActive">
   </form>
 </section>
+
+{{
+  vm.currentImage = vm.photos[0];
+  vm.setCurrentImage(vm.currentImage);
+}}
