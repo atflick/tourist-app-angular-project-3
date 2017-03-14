@@ -86,7 +86,7 @@ function RouterFunction($stateProvider){
       controllerAs: "vm"
     })
     .state("photosIndex", {
-      url: "/photos/:id",
+      url: "/events/:event_id/photos/:id",
       templateUrl: "js/ng-views/photos/index.html",
       controller: "PhotosIndexController",
       controllerAs: "vm"
@@ -94,7 +94,7 @@ function RouterFunction($stateProvider){
     .state("photosShow", {
       url: "/photos/show/:id",
       templateUrl: "js/ng-views/photos/show.html",
-      controller: "PhotoShowontroller",
+      controller: "PhotoShowController",
     })
   }
 // Factory Functions
@@ -112,7 +112,7 @@ function EventFactoryFunction($resource) {
 }
 
 function PhotoFactoryFunction($resource) {
-  return $resource("http://localhost:3000/photos/:id", {}, {
+  return $resource("http://localhost:3000/events/:event_id/photos/:id", {}, {
     update: { method: "PUT" },
     query: { method: "GET", isArray: true}
   })
@@ -272,18 +272,23 @@ angular.module("touristapp")
 
 // Photos Controller Functions
 function PhotosIndexControllerFunction($stateParams, $state, PhotoFactory, EventFactory) {
-  this.photos = PhotoFactory.query({event_id: $stateParams.id});
-  this.event = EventFactory.get({id: $stateParams.id});
-  console.log(this.event);
-  this.currentImage = {};
-  this.currentImageUrl = setUrl(this.currentImage.img_url)
+
+  PhotoFactory.query({event_id: $stateParams.event_id}, function(res){
+    this.photos = res;
+    this.currentImage = this.photos[0];
+  })
+  this.event = EventFactory.get({id: $stateParams.event_id});
+
+  // this.currentImageUrl = setUrl(this.currentImage.img_url)
   this.setCurrentImage = function(photo) {
     this.currentImage = photo;
-    this.currentImageUrl = setUrl(photo.img_url)
+  }
+  this.setUrl = function(url) {
+    return `url("${url}")`
   }
   this.photo = new PhotoFactory();
   this.addPhoto = function(){
-    // this.photo.event_id = $stateParams.id;
+    this.photo.event_id = $stateParams.id;
     this.photo.$save(function(){
       $state.reload();
     })
