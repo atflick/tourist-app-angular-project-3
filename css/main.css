@@ -180,6 +180,9 @@ nav {
 .flex-right {
   justify-content: flex-end; }
 
+h2 {
+  text-align: center; }
+
 .location {
   width: 175px;
   height: 175px;
