@@ -1,9 +1,9 @@
 @font-face {
   font-family: "Baloo";
-  src: url("../fonts/BalooBhaina-Regular.woff2") format("woff2"), url("../fonts/BalooBhaina-Regular.woff") format("woff"), url("../fonts/BalooBhaina-Regular.ttf") format("truetype"), url("../fonts/BalooBhaina-Regular.svg") format("svg"); }
+  src: url("../fonts/BalooBhaina-Regular.svg") format("svg"), url("../fonts/BalooBhaina-Regular.woff2") format("woff2"), url("../fonts/BalooBhaina-Regular.woff") format("woff"), url("../fonts/BalooBhaina-Regular.ttf") format("truetype"); }
 @font-face {
-  font-family: "Lato", sans-serif;
-  src: url("../fonts/Lato-Regular.woff2") format("woff2"), url("../fonts/Lato-Regular.woff") format("woff"), url("../fonts/Lato-Regular.ttf") format("truetype"), url("../fonts/Lato-Regular.svg") format("svg"); }
+  font-family: "Lato";
+  src: url("../fonts/Lato-Regular.svg") format("svg"), url("../fonts/Lato-Regular.woff2") format("woff2"), url("../fonts/Lato-Regular.woff") format("woff"), url("../fonts/Lato-Regular.ttf") format("truetype"); }
 * {
   margin: 0;
   padding: 0; }
@@ -29,7 +29,7 @@ main {
   padding: 5px;
   width: 600px;
   background: #fff;
-  border: 1px solid #000;
+  border: 1px solid rgba(200, 200, 200, 0.4);
   border-radius: 8px;
   margin: 0 auto; }
   .form-style div {
@@ -38,21 +38,24 @@ main {
     margin: 30px 2.5%; }
   .form-style input {
     padding: 4px 4px;
-    border: 1px solid black;
+    border: 1px solid rgba(200, 200, 200, 0.4);
     height: 15px;
     margin-bottom: 8px;
     width: 225px;
     border-radius: 4px; }
   .form-style select {
     padding: 4px 0;
-    border: 1px solid black;
+    border: 1px solid rgba(200, 200, 200, 0.4);
     height: 25px;
     margin-bottom: 8px;
     width: 235px;
     background: #fff; }
   .form-style button {
+    font-family: "Lato", sans-serif;
+    color: #fff;
+    background: #009cff;
     width: auto;
-    border: 1px solid #000;
+    border: 1px solid rgba(200, 200, 200, 0.4);
     padding: 5px 8px;
     font-size: 16px;
     margin: 5px auto;
@@ -60,6 +63,7 @@ main {
     transition: all ease .5s;
     border-radius: 4px; }
   .form-style button:hover {
+    color: #000;
     background: #fff;
     transition: all ease .5s; }
   .form-style input:focus, .form-style button:focus {
@@ -78,8 +82,11 @@ main {
   cursor: pointer; }
 
 button {
+  color: #fff;
+  font-family: "Lato", sans-serif;
+  background: #009cff;
   width: auto;
-  border: 1px solid #000;
+  border: 1px solid rgba(200, 200, 200, 0.4);
   padding: 5px 8px;
   font-size: 16px;
   margin: 5px auto;
@@ -88,6 +95,7 @@ button {
   border-radius: 4px; }
 
 button:hover {
+  color: #000;
   background: #fff;
   transition: all ease .5s; }
 
@@ -97,6 +105,32 @@ button:hover {
 
 button:focus, select:focus, input:focus, textarea:focus {
   outline: none; }
+
+.welcome-header {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  background: linear-gradient(rgba(218, 200, 169, 0.3), rgba(218, 200, 169, 0.3)), url("../img/home-bg.jpg") fixed no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  z-index: -1; }
+  .welcome-header h2, .welcome-header h4 {
+    color: #fff;
+    font-weight: normal;
+    text-shadow: 2px 2px 3px gray; }
+  .welcome-header h2 {
+    font-size: 46px; }
+  .welcome-header h4 {
+    margin-bottom: 40px;
+    font-family: "Lato", sans-serif;
+    font-size: 36px;
+    font-style: italic; }
+  .welcome-header button {
+    font-size: 26px;
+    padding: 8px 12px; }
 
 nav {
   position: fixed;
