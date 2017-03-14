@@ -31,6 +31,12 @@ angular
 // Routes
 function RouterFunction($stateProvider){
   $stateProvider
+    .state("welcome", {
+      url: "/",
+      templateUrl: "js/ng-views/welcome.html",
+      controller: "WelcomeController",
+      controllerAs: "vm"
+    })
     .state("locationIndex", {
       url: "/locations",
       templateUrl: "js/ng-views/locations/index.html",
@@ -112,6 +118,10 @@ function PhotoFactoryFunction($resource) {
 }
 
 // Separating our controllers by data model since this might get long and ugly.
+angular.module("touristapp")
+  .controller("WelcomeController", [
+    WelcomeControllerFunction
+  ])
 // Location Controllers
 angular.module("touristapp")
   .controller("LocationIndexController", [
@@ -165,6 +175,9 @@ angular.module("touristapp")
     EventShowControllerFunction
   ])
 
+function WelcomeControllerFunction() {
+
+}
 
 // Location Controller Functions
 function LocationIndexControllerFunction($stateParams, $state, LocationFactory) {
