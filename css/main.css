@@ -1,3 +1,41 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+.hide {
+  display: none; }
+
+.form-style {
+  padding: 5px;
+  width: 600px;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 8px; }
+  .form-style div {
+    float: left;
+    width: 40%;
+    margin: 0 2.5%; }
+  .form-style input {
+    padding: 4px 4px;
+    border: 1px solid black;
+    height: 15px;
+    margin-bottom: 1px; }
+  .form-style button {
+    width: auto;
+    border: 1px solid #000;
+    padding: 5px 8px;
+    font-size: 16px;
+    margin: 5px auto;
+    cursor: pointer;
+    transition: all ease .5s; }
+  .form-style button:hover {
+    background: #fff;
+    transition: all ease .5s; }
+  .form-style input:focus, .form-style button:focus {
+    outline: none; }
+  .form-style label, .form-style input, .form-style button {
+    display: block; }
+
 .location {
   width: 175px;
   height: 175px;
@@ -33,5 +71,16 @@
     width: 70px;
     margin: 0 3px;
     cursor: pointer; }
+
+.add-photo-form {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(60, 60, 60, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 /*# sourceMappingURL=main.css.map */

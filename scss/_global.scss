@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.hide {
+  display: none;
+}
+
+.form-style {
+  padding: 5px;
+  width: 600px;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 8px;
+  div {
+    float: left;
+    width: 40%;
+    margin: 0 2.5%;
+  }
+  input {
+    padding: 4px 4px;
+    border: 1px solid black;
+    height: 15px;
+    margin-bottom: 1px;
+  }
+
+  button {
+    width: auto;
+    border: 1px solid #000;
+    padding: 5px 8px;
+    font-size: 16px;
+    margin: 5px auto;
+    cursor: pointer;
+    transition: all ease .5s;
+  }
+
+  button:hover {
+    background: #fff;
+    transition: all ease .5s;
+  }
+
+  input:focus, button:focus {
+    outline: none;
+  }
+
+  label, input, button {
+    display: block;
+  }
+}

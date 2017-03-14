@@ -25,3 +25,15 @@
     cursor: pointer;
   }
 }
+
+.add-photo-form {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(60,60,60,.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -263,6 +263,13 @@ function PhotosIndexControllerFunction($stateParams, $state, PhotoFactory) {
     this.currentImageUrl = setUrl(photo.img_url)
     console.log(photo);
   }
+  this.photo = new PhotoFactory();
+  this.addPhoto = function(){
+    this.photo.event_id = this.event;
+    this.photo.$save(function(){
+      $state.reload();
+    })
+  }
 }
 
 function PhotoShowControllerFunction($stateParams, $state, PhotoFactory) {
