@@ -1,13 +1,8 @@
-
-
-<h2>Photos Index</h2>
-
-
 <section class="centered-container">
+  <h2>Photos Index</h2>
 
   <div class="current-image-box" ng-style="{'background-image' : vm.currentImageUrl}">
 
-    <!-- <img ng-src="{{vm.currentImage.img_url}}" alt=""> -->
   </div>
   <div class="current-image-info">
     <h3>{{vm.currentImage.title}}</h3>
@@ -17,4 +12,24 @@
     <img ng-repeat="photo in vm.photos | filter: {event_id: vm.event}" ng-click="vm.setCurrentImage(photo)" ng-src="{{photo.img_url}}">
   </div>
 
+  <button ng-click="newPhotoActive = !newPhotoActive">Add Photo</button>
+</section>
+
+
+
+<section class="add-photo-form" ng-show="newPhotoActive">
+  <form class="form-style" ng-submit="vm.addPhoto()">
+    <div class="form-labels">
+      <label>Title</label>
+      <label>Comment</label>
+      <label>Photo URL</label>
+    </div>
+    <div class="form-inputs">
+      <input type="text" placeholder="Title" ng-model="vm.photo.title">
+      <input type="text" placeholder="Comment" ng-model="vm.photo.comment">
+      <input type="text" placeholder="Photo URL" ng-model="vm.photo.img_url">
+    </div>
+    <button type="submit">Add Photo</button>
+    <img class="close-form" src="img/x-icon.png" ng-click="newPhotoActive = !newPhotoActive">
+  </form>
 </section>

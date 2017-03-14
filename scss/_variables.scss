@@ -1,1 +1,27 @@
-$dark-red: red;
+// Colors
+$skyblue: #009cff;
+$darkgray: #92959c;
+
+
+// Fonts
+@font-face {
+  font-family: "Baloo";
+          src:
+          url('../fonts/BalooBhaina-Regular.woff2') format('woff2'),
+          url('../fonts/BalooBhaina-Regular.woff') format('woff'),
+          url('../fonts/BalooBhaina-Regular.ttf') format('truetype'),
+          url('../fonts/BalooBhaina-Regular.svg') format('svg');
+        }
+
+$header-font: "Baloo", sans-serif;
+
+@font-face {
+  font-family: "Lato", sans-serif;
+          src:
+          url('../fonts/Lato-Regular.woff2') format('woff2'),
+          url('../fonts/Lato-Regular.woff') format('woff'),
+          url('../fonts/Lato-Regular.ttf') format('truetype'),
+          url('../fonts/Lato-Regular.svg') format('svg');
+        }
+
+$body-font: "Lato", sans-serif;

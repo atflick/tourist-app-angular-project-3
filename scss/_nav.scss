@@ -1,0 +1,39 @@
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 80px;
+  background: $skyblue;
+  align-items: center;
+  > div {
+    text-align: center;
+  }
+  h1 {
+    font-size: 42px;
+    font-weight: normal;
+  }
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+.searchbar {
+  width: 220px;
+  position: relative;
+  margin: 0 auto;
+  input {
+    background: #FFF;
+    font-size: 18px;
+    width: 100%;
+    border: 1px solid $darkgray;
+    border-radius: 20px;
+    padding: 5px 8px;
+  }
+  img {
+    position: absolute;
+    right: 0px;
+    top: 5px;
+    height: 20px;
+  }
+}
