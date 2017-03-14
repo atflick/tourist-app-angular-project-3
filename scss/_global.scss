@@ -110,7 +110,9 @@ button:hover {
   text-align: right;
   padding-right: 2px;
 }
-
+button:focus, select:focus, input:focus, textarea:focus {
+  outline: none;
+}
 // .form-labels, .form-inputs {
 //   margin: 30px 0;
 // }

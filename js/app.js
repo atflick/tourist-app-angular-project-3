@@ -113,7 +113,8 @@ function EventFactoryFunction($resource) {
 
 function PhotoFactoryFunction($resource) {
   return $resource("http://localhost:3000/photos/:id", {}, {
-    update: { method: "PUT" }
+    update: { method: "PUT" },
+    query: { method: "GET", isArray: true}
   })
 }
 
@@ -260,6 +261,7 @@ angular.module("touristapp")
     "$stateParams",
     "$state",
     "PhotoFactory",
+    "EventFactory",
     PhotosIndexControllerFunction
   ])
   .controller("PhotoShowController", [
@@ -270,20 +272,28 @@ angular.module("touristapp")
   ])
 
 // Photos Controller Functions
-function PhotosIndexControllerFunction($stateParams, $state, PhotoFactory) {
-  this.photos = PhotoFactory.query();
-  this.event = $stateParams.id;
+function PhotosIndexControllerFunction($stateParams, $state, PhotoFactory, EventFactory) {
+  this.photos = PhotoFactory.query({event_id: $stateParams.id});
+  this.event = EventFactory.get({id: $stateParams.id});
+  console.log(this.event);
   this.currentImage = {};
   this.currentImageUrl = setUrl(this.currentImage.img_url)
   this.setCurrentImage = function(photo) {
     this.currentImage = photo;
     this.currentImageUrl = setUrl(photo.img_url)
   }
-  console.log(this.photos);
   this.photo = new PhotoFactory();
   this.addPhoto = function(){
-    this.photo.event_id = this.event;
+    // this.photo.event_id = $stateParams.id;
     this.photo.$save(function(){
+      $state.reload();
+    })
+  }
+  this.update = function() {
+    this.currentImage.$update({id: this.currentImage.id});
+  }
+  this.delete = function() {
+    this.currentImage.$delete({id: this.currentImage.id}, function(){
       $state.reload();
     })
   }
