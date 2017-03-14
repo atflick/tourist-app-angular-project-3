@@ -1,9 +1,21 @@
-<h2>Add new location</h2>
+<section class="centered-container center">
+  <h2>Add new location</h2>
 
-<form ng-submit="vm.addLocation()">
-  <input type="text" placeholder="City" ng-model="vm.location.city">
-  <input type="text" placeholder="State" ng-model="vm.location.state">
-  <input type="text" placeholder="Country" ng-model="vm.location.country">
-  <input type="text" placeholder="Image" ng-model="vm.location.img_url">
-  <button type="submit">Add Location</button>
-</form>
+  <form class="form-style" ng-submit="vm.addLocation()">
+    <div class="form-labels">
+      <label>City</label>
+      <label>State</label>
+      <label>Country</label>
+      <label>Image URL</label>
+    </div>
+    
+    <div class="form-inputs">
+      <input type="text" placeholder="City" ng-model="vm.location.city">
+      <select ng-options="state for state in vm.states" placeholder="State" ng-model="vm.location.state"></select>
+      <select ng-options="country for country in vm.countries" ng-model="vm.location.country"></select>
+      <input type="text" placeholder="Image" ng-model="vm.location.img_url">
+    </div>
+    <button type="submit">Add Location</button>
+  </form>
+
+</section>
