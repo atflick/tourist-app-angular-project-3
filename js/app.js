@@ -171,7 +171,6 @@ angular.module("touristapp")
   .controller("EventShowController", [
     "$stateParams",
     "$state",
-    "LocationFactory",
     "EventFactory",
     EventShowControllerFunction
   ])
@@ -250,9 +249,9 @@ function EventEditControllerFunction($stateParams, $state, EventFactory) {
   }
 }
 
-function EventShowControllerFunction($stateParams, $state, LocationFactory, EventFactory) {
-  this.location = LocationFactory.get({id: $stateParams.id});
-  this.events = EventFactory.query();
+function EventShowControllerFunction($stateParams, $state, EventFactory) {
+  this.event = EventFactory.get({id: $stateParams.id});
+  console.log(this.event);
 }
 
 // Photos Controllers
