@@ -220,6 +220,9 @@ function LocationShowControllerFunction($stateParams, $state, LocationFactory, E
   this.setUrl = function(url) {
     return `url("${url}")`
   }
+  this.uppercase = function(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 }
 
 
