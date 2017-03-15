@@ -290,8 +290,8 @@ function PhotosIndexControllerFunction($stateParams, $state, PhotoFactory, Event
   }
   this.photo = new PhotoFactory();
   this.addPhoto = function(){
-    this.photo.event_id = $stateParams.id;
-    this.photo.$save(function(){
+    this.photo.event_id = $stateParams.event_id;
+    this.photo.$save({event_id: $stateParams.event_id},function(){
       $state.reload();
     })
   }
