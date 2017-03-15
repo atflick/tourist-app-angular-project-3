@@ -1,18 +1,44 @@
-<h2>Add a new event</h2>
+<section class="centered-container">
+  <h2>Add New Event</h2>
 
-<form ng-submit="vm.addEvent()">
+  <form class="form-style" ng-submit="vm.addEvent()">
+    <div class="form-labels event-form-col">
+      <label>Name</label>
+      <!-- select -->
+      <label>Category</label>
+      <label>Description</label>
+      <label>Date</label>
+      <label>Time</label>
+      <label>Address</label>
+      <label>Phone</label>
+      <!-- select  -->
+      <label>Rating</label>
+      <label>Website</label>
+      <label>Map Link</label>
+      <label>Image URL</label>
+    </div>
 
-  <input type="text" placeholder="Name" ng-model="vm.event.name">
-  <input type="text" placeholder="Entertainment, Dining, etc." ng-model="vm.event.category">
-  <input type="text" placeholder="Description" ng-model="vm.event.description">
-  <input type="text" placeholder="Date" ng-model="vm.event.date">
-  <input type="text" placeholder="Time" ng-model="vm.event.time">
-  <input type="text" placeholder="Address" ng-model="vm.event.address">
-  <input type="text" placeholder="###-###-####" ng-model="vm.event.phone_number">
-  <input type="text" placeholder="Rating 1-5" ng-model="vm.event.rating">
-  <input type="text" placeholder="Event Website" ng-model="vm.event.website_url">
-  <input type="text" placeholder="GoogleMaps Link" ng-model="vm.event.map_url">
-  <input type="text" placeholder="Image Link" ng-model="vm.event.img_url">
+    <div class="form-inputs event-form-col">
+      <input type="text" placeholder="Name" ng-model="vm.event.name">
+      <select ng-model="vm.event.category" placeholder="Select Category">
+        <option value="dining">Dining</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="sports">Sports</option>
+        <option value="activities">Activities</option>
+        <option value="culture">Culture</option>
+      </select>
+      <input type="text" placeholder="Description" ng-model="vm.event.description">
+      <input type="text" placeholder="Date" ng-model="vm.event.date">
+      <input type="text" placeholder="Time" ng-model="vm.event.time">
+      <input type="text" placeholder="Address" ng-model="vm.event.address">
+      <input type="text" placeholder="###-###-####" ng-model="vm.event.phone_number">
+      <input type="text" placeholder="Rating" ng-model="vm.event.rating">
+      <input type="text" placeholder="Event Website" ng-model="vm.event.website_url">
+      <input type="text" placeholder="Google Maps Link" ng-model="vm.event.map_url">
+      <input type="text" placeholder="Image Link" ng-model="vm.event.img_url">
+    </div>
 
-  <button type="submit">Add Event</button>
-</form>
+
+    <button type="submit">Add Event</button>
+  </form>
+</section>

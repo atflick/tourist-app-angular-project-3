@@ -228,6 +228,9 @@ function LocationShowControllerFunction($stateParams, $state, LocationFactory, E
   this.setUrl = function(url) {
     return `url("${url}")`
   }
+  this.uppercase = function(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 }
 
 
@@ -298,8 +301,8 @@ function PhotosIndexControllerFunction($stateParams, $state, PhotoFactory, Event
   }
   this.photo = new PhotoFactory();
   this.addPhoto = function(){
-    this.photo.event_id = $stateParams.id;
-    this.photo.$save(function(){
+    this.photo.event_id = $stateParams.event_id;
+    this.photo.$save({event_id: $stateParams.event_id},function(){
       $state.reload();
     })
   }
