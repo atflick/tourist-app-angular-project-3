@@ -3,19 +3,30 @@ h2 {
   text-align: center;
 }
 
-.location {
-  width: 175px;
-  height: 175px;
-  background-size: cover;
-  background-position: center;
-  cursor: pointer;
-
-
-}
- 
-.flex-container {
+.location-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-
+  justify-content: space-between;
+  h2 {
+    color: #fff;
+    text-shadow: 2px 2px 3px gray;
+  }
+  div {
+    border: 0px solid #000;
+    border-radius: 5px;
+    height: 210px;
+    width: 230px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px gray;
+    margin-bottom: 50px;
+    transition: all .2s ease;
+    padding-top: 20px;
+  }
+  div:hover {
+    box-shadow: 1px 1px 8px darkgray, -1px -1px 8px darkgray;
+  }
 }
