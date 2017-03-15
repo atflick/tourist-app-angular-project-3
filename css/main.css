@@ -29,7 +29,7 @@ main {
   padding: 5px;
   width: 600px;
   background: #fff;
-  border: 1px solid rgba(200, 200, 200, 0.4);
+  border: 1px solid #c8c8c8;
   border-radius: 8px;
   margin: 0 auto; }
   .form-style div {
@@ -38,14 +38,14 @@ main {
     margin: 30px 2.5%; }
   .form-style input {
     padding: 4px 4px;
-    border: 1px solid rgba(200, 200, 200, 0.4);
+    border: 1px solid #c8c8c8;
     height: 15px;
     margin-bottom: 8px;
     width: 225px;
     border-radius: 4px; }
   .form-style select {
     padding: 4px 0;
-    border: 1px solid rgba(200, 200, 200, 0.4);
+    border: 1px solid #c8c8c8;
     height: 25px;
     margin-bottom: 8px;
     width: 235px;
@@ -55,7 +55,7 @@ main {
     color: #fff;
     background: #009cff;
     width: auto;
-    border: 1px solid rgba(200, 200, 200, 0.4);
+    border: 1px solid #c8c8c8;
     padding: 5px 8px;
     font-size: 16px;
     margin: 5px auto;
@@ -86,7 +86,7 @@ button {
   font-family: "Lato", sans-serif;
   background: #009cff;
   width: auto;
-  border: 1px solid rgba(200, 200, 200, 0.4);
+  border: 1px solid #c8c8c8;
   padding: 5px 8px;
   font-size: 16px;
   margin: 5px auto;
@@ -138,12 +138,15 @@ nav {
   left: 0;
   height: 80px;
   background: #009cff;
-  align-items: center; }
+  align-items: center;
+  box-shadow: 0 2px 5px gray;
+  z-index: 3; }
   nav > div {
     text-align: center; }
   nav h1 {
     font-size: 42px;
-    font-weight: normal; }
+    font-weight: normal;
+    text-shadow: 2px 2px 5px gray; }
   nav a {
     text-decoration: none;
     color: #fff; }
@@ -158,7 +161,8 @@ nav {
     width: 100%;
     border: 1px solid #92959c;
     border-radius: 20px;
-    padding: 5px 8px; }
+    padding: 5px 8px;
+    box-shadow: 2px 2px 5px gray; }
   .searchbar img {
     position: absolute;
     right: 0px;
@@ -217,20 +221,54 @@ nav {
 h2 {
   text-align: center; }
 
-.location {
-  width: 175px;
-  height: 175px;
-  background-size: cover;
-  background-position: center;
-  cursor: pointer; }
-
-.flex-container {
+.location-container {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  justify-content: space-between; }
+  .location-container h2 {
+    color: #fff;
+    text-shadow: 2px 2px 3px gray; }
+  .location-container div {
+    border: 0px solid #000;
+    border-radius: 5px;
+    height: 210px;
+    width: 230px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px gray;
+    margin-bottom: 50px;
+    transition: all .2s ease;
+    padding-top: 20px; }
+  .location-container div:hover {
+    box-shadow: 1px 1px 8px darkgray, -1px -1px 8px darkgray; }
+
+.location-header {
+  margin-top: -100px;
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  align-content: center;
+  align-items: center; }
+  .location-header h2 {
+    font-size: 40px;
+    color: #fff;
+    text-shadow: 2px 2px 2px gray;
+    width: 100%; }
+
+.location-events h2 {
+  text-align: left; }
+.location-events div {
+  width: 100%; }
+.location-events h4 {
+  font-family: "Lato", sans-serif; }
 
 .centered-container {
-  width: 800px;
+  max-width: 800px;
   padding: 8px 8px;
   margin: 0 auto; }
 

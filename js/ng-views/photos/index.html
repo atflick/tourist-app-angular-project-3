@@ -1,6 +1,7 @@
+
 <section class="centered-container center">
   <h2>Photos for {{vm.event.name}}</h2>
-  <div class="current-image-box" ng-style="{'background-image' : vm.currentImageUrl}">
+  <div class="current-image-box" style="background-image: {{vm.setUrl(vm.currentImage.img_url)}};">
     <div class="default-image">
       <h2>No Images</h2>
       <h2>to Display</h2>
@@ -29,7 +30,7 @@
   </div>
   <!-- Thumbnail previews of images get displayed here -->
   <div class="image-slide-box">
-    <img ng-repeat="photo in vm.photos | filter: {event_id: vm.event}" ng-click="vm.setCurrentImage(photo)" ng-src="{{photo.img_url}}">
+    <img ng-repeat="photo in vm.photos" ng-click="vm.setCurrentImage(photo)" ng-src="{{photo.img_url}}">
   </div>
 
   <button ng-click="newPhotoActive = !newPhotoActive">Add Photo</button>
@@ -53,8 +54,3 @@
     <img class="close-form" src="img/x-icon.png" ng-click="newPhotoActive = !newPhotoActive">
   </form>
 </section>
-
-{{
-  vm.currentImage = vm.photos[0];
-  vm.setCurrentImage(vm.currentImage);
-}}
