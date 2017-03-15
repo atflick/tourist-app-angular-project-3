@@ -2,9 +2,17 @@
   <h2>{{vm.location.city }}, {{vm.location.state}}</h2>
 </section>
 
+<div>
+  <input type="checkbox" ng-model="filter['dining']" />Dining
+  <input type="checkbox" ng-model="filter['entertainment']" />Entertainment
+  <input type="checkbox" ng-model="filter['sports']" />Sports
+  <input type="checkbox" ng-model="filter['culture']" />Culture
+  <input type="checkbox" ng-model="filter['activities']" />Activities
+</div>
+
 <section class="centered-container">
   <div class="flex-container location-events">
-    <div ng-repeat="event in vm.events | filter: {location_id: vm.location.id}" ui-sref="eventShow({id: event.id})">
+    <div ng-repeat="event in vm.events | filter: {location_id: vm.location.id} | filter:filterByCategory" ui-sref="eventShow({id: event.id})">
       <h2>{{event.name}}</h2>
       <h4><span>Address:</span> {{event.address}}</h4>
       <h4><span>Category:</span> {{vm.uppercase(event.category)}}</h4>
