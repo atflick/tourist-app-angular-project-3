@@ -118,6 +118,14 @@ function PhotoFactoryFunction($resource) {
   })
 }
 
+// test function for comments
+function CommetnsFactoryFunction($resource) {
+  return $resource("http://localhost:3000/events/:event_id/photos/:id", {}, {
+    update: { method: "PUT" },
+    query: { method: "GET", isArray: true}
+  })
+}
+
 // Separating our controllers by data model since this might get long and ugly.
 angular.module("touristapp")
   .controller("WelcomeController", [
