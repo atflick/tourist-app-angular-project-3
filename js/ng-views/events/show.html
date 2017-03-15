@@ -1,24 +1,23 @@
-<div id="event-nav-filter">
-  <input type="checkbox" ng-model="filter['Dining']" />Dining
-  <input type="checkbox" ng-model="filter['entertainment']" />Entertainment
-  <input type="checkbox" ng-model="filter['sports']" />Sports
-  <input type="checkbox" ng-model="filter['culture']" />Culture
-  <input type="checkbox" ng-model="filter['activities']" />Activities
-</div>
+<section class="centered-container">
 
-<div class="event_show">
+  <div class="event_show">
   <h2>{{ vm.event.name }}</h2>
+
   <hr>
 
-  <a ui-sref="eventEdit({id: vm.event.id})">Edit</a>
   <div>
-  <img ng-src="event.img_url">
-  <h3>{{ event.description }}</h3>
-  <h3>{{ event.address }}</h3><a ui-sref="{{id: event.id}}">Map</a>
-  <h3>{{ event.phone_number }}</h3>
-  <h3>{{ event.website_url }}</h3>
-  <h3>{{ event.date }}</h3>
-  <h3>{{ event.time }}</h3>
-  <h3>{{ event.category }}</h3>
+    <h3>{{ vm.event.description }}</h3>
+    <h3>{{ vm.event.address }}</h3>
+    <h3>{{ vm.event.phone_number }}</h3>
+    <h3><a href="{{vm.event.website_url}}">{{vm.event.website_url}}</a></h3>
+    <h3>{{ vmevent.date }}</h3>
+    <h3>{{ vm.event.time }}</h3>
+    <h3>Category: {{ vm.event.category }}</h3>
   </div>
-</div>
+  <img ng-src="{{vm.event.img_url}}">
+</section>
+
+
+
+<button ui-sref="photosIndex({event_id: vm.event.id})">View Photos</button>
+<button ui-sref="eventEdit({id: vm.event.id})">Edit Event</button>

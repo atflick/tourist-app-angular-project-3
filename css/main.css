@@ -1,10 +1,16 @@
 @font-face {
   font-family: "Baloo";
+
+  src: url("../fonts/BalooBhaina-Regular.woff2") format("woff2"), url("../fonts/BalooBhaina-Regular.woff") format("woff"), url("../fonts/BalooBhaina-Regular.ttf") format("truetype"), url("../fonts/BalooBhaina-Regular.svg") format("svg"); }
+@font-face {
+  font-family: "Lato", sans-serif;
+  src: url("../fonts/Lato-Regular.woff2") format("woff2"), url("../fonts/Lato-Regular.woff") format("woff"), url("../fonts/Lato-Regular.ttf") format("truetype"), url("../fonts/Lato-Regular.svg") format("svg"); }
+
   src: url("../fonts/BalooBhaina-Regular.svg") format("svg"), url("../fonts/BalooBhaina-Regular.woff2") format("woff2"), url("../fonts/BalooBhaina-Regular.woff") format("woff"), url("../fonts/BalooBhaina-Regular.ttf") format("truetype"); }
 @font-face {
   font-family: "Lato";
   src: url("../fonts/Lato-Regular.svg") format("svg"), url("../fonts/Lato-Regular.woff2") format("woff2"), url("../fonts/Lato-Regular.woff") format("woff"), url("../fonts/Lato-Regular.ttf") format("truetype"); }
-* {
+
   margin: 0;
   padding: 0; }
 
@@ -29,7 +35,11 @@ main {
   padding: 5px;
   width: 600px;
   background: #fff;
+
+  border: 1px solid #000;
+
   border: 1px solid rgba(200, 200, 200, 0.4);
+
   border-radius: 8px;
   margin: 0 auto; }
   .form-style div {
@@ -38,24 +48,37 @@ main {
     margin: 30px 2.5%; }
   .form-style input {
     padding: 4px 4px;
+
+    border: 1px solid black;
+
     border: 1px solid rgba(200, 200, 200, 0.4);
+
     height: 15px;
     margin-bottom: 8px;
     width: 225px;
     border-radius: 4px; }
   .form-style select {
     padding: 4px 0;
+
+    border: 1px solid black;
+
     border: 1px solid rgba(200, 200, 200, 0.4);
+
     height: 25px;
     margin-bottom: 8px;
     width: 235px;
     background: #fff; }
   .form-style button {
+
+    width: auto;
+    border: 1px solid #000;
+
     font-family: "Lato", sans-serif;
     color: #fff;
     background: #009cff;
     width: auto;
     border: 1px solid rgba(200, 200, 200, 0.4);
+
     padding: 5px 8px;
     font-size: 16px;
     margin: 5px auto;
@@ -63,7 +86,9 @@ main {
     transition: all ease .5s;
     border-radius: 4px; }
   .form-style button:hover {
+
     color: #000;
+
     background: #fff;
     transition: all ease .5s; }
   .form-style input:focus, .form-style button:focus {
@@ -82,11 +107,16 @@ main {
   cursor: pointer; }
 
 button {
+
+  width: auto;
+  border: 1px solid #000;
+
   color: #fff;
   font-family: "Lato", sans-serif;
   background: #009cff;
   width: auto;
   border: 1px solid rgba(200, 200, 200, 0.4);
+
   padding: 5px 8px;
   font-size: 16px;
   margin: 5px auto;
@@ -105,6 +135,7 @@ button:hover {
 
 button:focus, select:focus, input:focus, textarea:focus {
   outline: none; }
+
 
 .welcome-header {
   display: flex;
@@ -228,31 +259,6 @@ h2 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap; }
-
-body {
-  background-color: white; }
-
-.event_index {
-  border-bottom: 1px solid black;
-  box-shadow: 5px 5px 5px #888888; }
-
-.title {
-  border: 1px solid black;
-  width: 20%;
-  padding: 10px;
-  background-color: blue;
-  opacity: 0.5;
-  color: white;
-  margin-left: 100px; }
-
-.posts {
-  border-bottom: 2px, solid black; }
-
-.container {
-  margin: auto;
-  width: 60%;
-  border: 1px solid white;
-  background-color: white; }
 
 .centered-container {
   width: 800px;
