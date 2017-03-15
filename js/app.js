@@ -7,9 +7,10 @@ let states = ["AL","AK","AZ","AR","CA","CO","CT","DC","DE","FL","GA","HI","ID","
 let countries = ["USA"];
 
 angular
-  .module("touristapp", [
+  .module("touristapp", "demoapp" [
     "ui.router",
     "ngResource"
+    "leaflet-directive"
   ])
   .config([
     "$stateProvider",
@@ -27,6 +28,13 @@ angular
     "$resource",
     PhotoFactoryFunction
   ])
+  .extend($scope, {
+    center: {
+        lat: 51.505,
+        lng: -0.09,
+        zoom: 8
+    }
+});
 
 // Routes
 function RouterFunction($stateProvider){
