@@ -2,15 +2,15 @@
 Error: Invalid CSS after "@import "events"": expected "{", was ";"
         on line 16 of scss/main.scss
 
-11: 
-12: <<<<<<< HEAD
-13: 
-14: =======
-15: >>>>>>> 8275229f1b2273a7652f73dd7dbf0367bfa50ec3
+11:
+12:
+13:
+14:
+15: 
 16: @import "events";
-17: 
+17:
 18: @import "photos";
-19: 
+19:
 20: @import "afstyle";
 
 Backtrace:
