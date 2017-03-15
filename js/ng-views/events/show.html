@@ -8,10 +8,17 @@
 
 <div class="event_show">
   <h2>{{ vm.event.name }}</h2>
+  <hr>
 
   <a ui-sref="eventEdit({id: vm.event.id})">Edit</a>
   <div>
-  <!-- <img ng-src="vm.event.img_url"> -->
-  <!-- Need to add the remainder of the show fields and decide on structure. CJ -->
+  <img ng-src="event.img_url">
+  <h3>{{ event.description }}</h3>
+  <h3>{{ event.address }}</h3><a ui-sref="{{id: event.id}}">Map</a>
+  <h3>{{ event.phone_number }}</h3>
+  <h3>{{ event.website_url }}</h3>
+  <h3>{{ event.date }}</h3>
+  <h3>{{ event.time }}</h3>
+  <h3>{{ event.category }}</h3>
   </div>
 </div>
