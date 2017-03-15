@@ -28,11 +28,17 @@
         <option value="culture">Culture</option>
       </select>
       <input type="text" placeholder="Description" ng-model="vm.event.description">
-      <input type="text" placeholder="Date" ng-model="vm.event.date">
-      <input type="text" placeholder="Time" ng-model="vm.event.time">
+      <input type="date" placeholder="Date" ng-model="vm.event.date">
+      <input type="time" placeholder="Time" ng-model="vm.event.time">
       <input type="text" placeholder="Address" ng-model="vm.event.address">
       <input type="text" placeholder="###-###-####" ng-model="vm.event.phone_number">
-      <input type="text" placeholder="Rating" ng-model="vm.event.rating">
+      <select ng-model="vm.event.rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
       <input type="text" placeholder="Event Website" ng-model="vm.event.website_url">
       <input type="text" placeholder="Google Maps Link" ng-model="vm.event.map_url">
       <input type="text" placeholder="Image Link" ng-model="vm.event.img_url">

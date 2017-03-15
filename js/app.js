@@ -68,7 +68,7 @@ function RouterFunction($stateProvider){
       controllerAs: "vm"
     })
     .state("eventNew", {
-      url: "/events/new",
+      url: "/events/new/:id",
       templateUrl: "js/ng-views/events/new.html",
       controller: "EventNewController",
       controllerAs: "vm"
@@ -235,6 +235,7 @@ function EventIndexControllerFunction($stateParams, $state, EventFactory) {
 function EventNewControllerFunction($stateParams, $state, EventFactory) {
   this.event = new EventFactory();
   this.addEvent = function(){
+    this.event.location_id = $stateParams.id;
     this.event.$save(function(event){
       $state.go("eventShow", {id: location.id});
     })

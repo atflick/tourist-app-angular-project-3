@@ -20,7 +20,13 @@
 
     <div class="form-inputs event-form-col">
       <input type="text" placeholder="Name" ng-model="vm.event.name">
-      <input type="text" placeholder="Entertainment, Dining, etc." ng-model="vm.event.category">
+      <select ng-model="vm.event.category">
+        <option value="dining">Dining</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="sports">Sports</option>
+        <option value="activities">Activities</option>
+        <option value="culture">Culture</option>
+      </select>
       <input type="text" placeholder="Description" ng-model="vm.event.description">
       <input type="text" placeholder="Date" ng-model="vm.event.date">
       <input type="text" placeholder="Time" ng-model="vm.event.time">
