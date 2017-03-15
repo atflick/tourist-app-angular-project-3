@@ -15,14 +15,14 @@
     <div ng-repeat="event in vm.events | filter: {location_id: vm.location.id} | filter:filterByCategory" ui-sref="eventShow({id: event.id})">
       <h2>{{event.name}}</h2>
       <h4><span>Address:</span> {{event.address}}</h4>
-      <h4><span>Category:</span> {{event.category}}</h4>
-      <h4><span>Phone:</span> {{event.phone}}</h4>
+      <h4><span>Category:</span> {{vm.uppercase(event.category)}}</h4>
+      <h4><span>Phone:</span> {{event.phone_number}}</h4>
       <h4><span>Website:</span> <a href="{{event.website_url}}">{{event.website_url}}</a></h4>
       <img ng-src="{{event.img_url}}">
     </div>
   </div>
+
+  <button ui-sref="eventNew">Add Event</button>
+  <button ui-sref="locationEdit({id: vm.location.id})">Edit Location</button>
+
 </section>
-
-
-
-<a ui-sref="locationEdit({id: vm.location.id})">Edit</a>
