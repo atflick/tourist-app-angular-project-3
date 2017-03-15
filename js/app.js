@@ -315,3 +315,22 @@ function PhotoShowControllerFunction($stateParams, $state, PhotoFactory) {
 function setUrl(url) {
   return `url("${url}")`
 }
+
+/////Functions for event category selection boxes
+// function filterByCategory(event) {
+//   // Display the event if
+//   var displayEvent =
+//       // the event's category checkbox is checked (`filter[category]` is true)
+//       $scope.filter[event.category] ||   // or
+//
+//       // no checkbox is checked (all `filter[...]` are false)
+//       noFilter($scope.filter);
+//
+//   return showEvent;
+// };
+//
+// function noFilter(filterObj) {
+//   return Object.
+//     keys(filterObj).
+//     every(function (key) { return !filterObj[key]; });
+// }
