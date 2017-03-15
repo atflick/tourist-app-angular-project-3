@@ -1,0 +1,159 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.hide {
+  display: none;
+}
+
+h1, h2, h3, h4 {
+  font-family: $header-font;
+  font-weight: normal;
+}
+
+body {
+  font-family: $body-font;
+}
+
+main {
+  padding-top: 80px
+}
+
+.center {
+  text-align: center;
+}
+
+.form-style {
+  position: relative;
+  padding: 5px;
+  width: 600px;
+  background: #fff;
+  border: 1px solid $lightgray;
+  border-radius: 8px;
+  margin: 0 auto;
+  div {
+    float: left;
+    width: 40%;
+    margin: 30px 2.5%;
+  }
+  input {
+    padding: 4px 4px;
+    border: 1px solid $lightgray;
+    height: 15px;
+    margin-bottom: 8px;
+    width: 225px;
+    border-radius: 4px;
+  }
+  select {
+    padding: 4px 0;
+    border: 1px solid $lightgray;
+    height: 25px;
+    margin-bottom: 8px;
+    width: 235px;
+    background: #fff;
+  }
+  button {
+    font-family: $body-font;
+    color: #fff;
+    background: $skyblue;
+    width: auto;
+    border: 1px solid $lightgray;
+    padding: 5px 8px;
+    font-size: 16px;
+    margin: 5px auto;
+    cursor: pointer;
+    transition: all ease .5s;
+    border-radius: 4px;
+  }
+
+  button:hover {
+    color: #000;
+    background: #fff;
+    transition: all ease .5s;
+  }
+
+  input:focus, button:focus {
+    outline: none;
+  }
+
+  label, input, button, select {
+    display: block;
+  }
+  label {
+    padding-top: 4px;
+    padding-bottom: 11px;
+  }
+}
+
+.close-form {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 15px;
+  cursor: pointer;
+}
+
+button {
+  color: #fff;
+  font-family: $body-font;
+  background: $skyblue;
+  width: auto;
+  border: 1px solid $lightgray;
+  padding: 5px 8px;
+  font-size: 16px;
+  margin: 5px auto;
+  cursor: pointer;
+  transition: all ease .5s;
+  border-radius: 4px;
+}
+
+button:hover {
+  color: #000;
+  background: #fff;
+  transition: all ease .5s;
+}
+
+.form-labels {
+  text-align: right;
+  padding-right: 2px;
+}
+button:focus, select:focus, input:focus, textarea:focus {
+  outline: none;
+}
+
+
+.welcome-header {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  background:     linear-gradient(
+      rgba(218, 200, 169, .3),
+      rgba(218, 200, 169, .3)
+    ),
+    url("../img/home-bg.jpg") fixed no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  h2, h4 {
+    color: #fff;
+    font-weight: normal;
+    text-shadow: 2px 2px 3px gray;
+  }
+  h2 {
+    font-size: 46px;
+  }
+  h4 {
+    margin-bottom: 40px;
+    font-family: $body-font;
+    font-size: 36px;
+    font-style: italic;
+  }
+  button {
+    font-size: 26px;
+    padding: 8px 12px;
+  }
+}

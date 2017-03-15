@@ -3,8 +3,8 @@
 //   {id: 2, city: "New York City", state: "NY", country: "USA", img_url: "", area: ""},
 //   {id: 3, city: "Boston", state: "MA", country: "USA", img_url: "", area: ""}
 // ]
-
-
+let states = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
+let countries = ["USA"];
 
 angular
   .module("touristapp", [
@@ -23,10 +23,20 @@ angular
     "$resource",
     EventFactoryFunction
   ])
+  .factory("PhotoFactory", [
+    "$resource",
+    PhotoFactoryFunction
+  ])
 
 // Routes
 function RouterFunction($stateProvider){
   $stateProvider
+    .state("welcome", {
+      url: "/",
+      templateUrl: "js/ng-views/welcome.html",
+      controller: "WelcomeController",
+      controllerAs: "vm"
+    })
     .state("locationIndex", {
       url: "/locations",
       templateUrl: "js/ng-views/locations/index.html",
@@ -75,8 +85,18 @@ function RouterFunction($stateProvider){
       controller: "EventShowController",
       controllerAs: "vm"
     })
-}
-
+    .state("photosIndex", {
+      url: "/photos/:id",
+      templateUrl: "js/ng-views/photos/index.html",
+      controller: "PhotosIndexController",
+      controllerAs: "vm"
+    })
+    .state("photosShow", {
+      url: "/photos/show/:id",
+      templateUrl: "js/ng-views/photos/show.html",
+      controller: "PhotoShowontroller",
+    })
+  }
 // Factory Functions
 
 function LocationFactoryFunction($resource) {
@@ -91,7 +111,18 @@ function EventFactoryFunction($resource) {
   })
 }
 
+function PhotoFactoryFunction($resource) {
+  return $resource("http://localhost:3000/photos/:id", {}, {
+    update: { method: "PUT" },
+    query: { method: "GET", isArray: true}
+  })
+}
+
 // Separating our controllers by data model since this might get long and ugly.
+angular.module("touristapp")
+  .controller("WelcomeController", [
+    WelcomeControllerFunction
+  ])
 // Location Controllers
 angular.module("touristapp")
   .controller("LocationIndexController", [
@@ -118,7 +149,7 @@ angular.module("touristapp")
     "LocationFactory",
     "EventFactory",
     LocationShowControllerFunction
-  ])///////// Event Controllers
+  ])  // Event Controllers
   .controller("EventIndexController", [
     "$stateParams",
     "$state",
@@ -145,10 +176,16 @@ angular.module("touristapp")
     EventShowControllerFunction
   ])
 
+function WelcomeControllerFunction() {
+
+}
 
 // Location Controller Functions
 function LocationIndexControllerFunction($stateParams, $state, LocationFactory) {
   this.locations = LocationFactory.query();
+  this.setUrl = function(url) {
+    return `url("${url}")`
+  }
 }
 
 function LocationNewControllerFunction($stateParams, $state, LocationFactory) {
@@ -158,6 +195,8 @@ function LocationNewControllerFunction($stateParams, $state, LocationFactory) {
       $state.go("locationShow", {id: location.id});
     })
   }
+  this.states = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
+  this.countries = ["USA"];
 }
 
 function LocationEditControllerFunction($stateParams, $state, LocationFactory) {
@@ -172,12 +211,15 @@ function LocationEditControllerFunction($stateParams, $state, LocationFactory) {
       $state.go("locationIndex");
     })
   }
+  this.states = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
+  this.countries = ["USA"];
 }
 
 function LocationShowControllerFunction($stateParams, $state, LocationFactory, EventFactory) {
   this.location = LocationFactory.get({id: $stateParams.id});
   this.events = EventFactory.query();
 }
+
 
 // Event Controller Functions
 
@@ -209,6 +251,57 @@ function EventEditControllerFunction($stateParams, $state, EventFactory) {
 }
 
 function EventShowControllerFunction($stateParams, $state, LocationFactory, EventFactory) {
-  this.location = LocationFactory.get({id: $stateParams.id});
-  this.events = EventFactory.query();
+  this.event = EventFactory.get({id: $stateParams.id});
+}
+
+// Photos Controllers
+angular.module("touristapp")
+  .controller("PhotosIndexController", [
+    "$stateParams",
+    "$state",
+    "PhotoFactory",
+    "EventFactory",
+    PhotosIndexControllerFunction
+  ])
+  .controller("PhotoShowController", [
+    "$stateParams",
+    "$state",
+    "PhotoFactory",
+    PhotoShowControllerFunction
+  ])
+
+// Photos Controller Functions
+function PhotosIndexControllerFunction($stateParams, $state, PhotoFactory, EventFactory) {
+  this.photos = PhotoFactory.query({event_id: $stateParams.id});
+  this.event = EventFactory.get({id: $stateParams.id});
+  console.log(this.event);
+  this.currentImage = {};
+  this.currentImageUrl = setUrl(this.currentImage.img_url)
+  this.setCurrentImage = function(photo) {
+    this.currentImage = photo;
+    this.currentImageUrl = setUrl(photo.img_url)
+  }
+  this.photo = new PhotoFactory();
+  this.addPhoto = function(){
+    // this.photo.event_id = $stateParams.id;
+    this.photo.$save(function(){
+      $state.reload();
+    })
+  }
+  this.update = function() {
+    this.currentImage.$update({id: this.currentImage.id});
+  }
+  this.delete = function() {
+    this.currentImage.$delete({id: this.currentImage.id}, function(){
+      $state.reload();
+    })
+  }
+}
+
+function PhotoShowControllerFunction($stateParams, $state, PhotoFactory) {
+  this.photo = PhotoFactory.get({id: $stateParams.id})
+}
+
+function setUrl(url) {
+  return `url("${url}")`
 }

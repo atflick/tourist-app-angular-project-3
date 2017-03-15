@@ -7,6 +7,7 @@
 </style>
 <body>
 
+<<<<<<< HEAD
 <h2 class="w3-center">Automatic Slideshow</h2>
 
 <div class="w3-content w3-section" style="max-width:500px">
@@ -51,6 +52,19 @@ function carousel() {
 
 <div class ="event_index" ng-repeat="event in vm.events">
   <h2><a ui-sref="eventShow({id: location.id})">{{event.name}}</a></h2>
+=======
+<div id="event-nav-filter">
+  <input type="checkbox" ng-model="filter['Dining']" />Dining
+  <input type="checkbox" ng-model="filter['entertainment']" />Entertainment
+  <input type="checkbox" ng-model="filter['sports']" />Sports
+  <input type="checkbox" ng-model="filter['culture']" />Culture
+  <input type="checkbox" ng-model="filter['activities']" />Activities
+</div>
+
+<!-- <div class="event_index" ng-repeat="event in vm.events"> -->
+<div class="event_index" ng-repeat="event in vm.events" ui-sref="eventShow({id: event.id})";>
+  <h2><a ui-sref="eventShow({id: event.id})">{{event.name}}</a></h2>
+>>>>>>> 792891fed7c609a50c11c71ca621b3615f0f999a
     <p>{{event.date}}, {{event.time}}</p>
     <p>About:{{event.description}}</p>
     <p>Popularity: {{event.rating}}</p>
