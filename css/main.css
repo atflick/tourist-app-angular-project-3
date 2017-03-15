@@ -1,77 +1,298 @@
-/*
-Error: Invalid CSS after "...ition: relative": expected "{", was ";"
-        on line 41 of scss/_photos.scss
-        from line 12 of scss/main.scss
+@font-face {
+  font-family: "Baloo";
+  src: url("../fonts/BalooBhaina-Regular.woff2") format("woff2"), url("../fonts/BalooBhaina-Regular.woff") format("woff"), url("../fonts/BalooBhaina-Regular.ttf") format("truetype"), url("../fonts/BalooBhaina-Regular.svg") format("svg"); }
+@font-face {
+  font-family: "Lato", sans-serif;
+  src: url("../fonts/Lato-Regular.woff2") format("woff2"), url("../fonts/Lato-Regular.woff") format("woff"), url("../fonts/Lato-Regular.ttf") format("truetype"), url("../fonts/Lato-Regular.svg") format("svg"); }
+* {
+  margin: 0;
+  padding: 0; }
 
-36:   padding: 10px 0;
-37:   margin: 0 auto;
-38:   height: 50px;
-39: <<<<<<< HEAD
-40: =======
-41:   position: relative;
-42:   overflow: hidden;
-43: }
-44: 
-45: .current-image-edit {
-46:   position: absolute;
+.hide {
+  display: none; }
 
-Backtrace:
-scss/_photos.scss:41
-scss/main.scss:12
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:1207:in `expected'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:1137:in `expected'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:1132:in `tok!'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:665:in `block'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:735:in `declaration_or_ruleset'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:685:in `block_child'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:677:in `block_contents'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:666:in `block'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:658:in `ruleset'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:684:in `block_child'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:677:in `block_contents'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:125:in `stylesheet'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/scss/parser.rb:41:in `parse'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/engine.rb:406:in `_to_tree'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/engine.rb:312:in `to_tree'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:326:in `block in visit_import'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/stack.rb:88:in `block in with_import'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/stack.rb:88:in `with_import'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:325:in `visit_import'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/stack.rb:79:in `block in with_base'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/stack.rb:79:in `with_base'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `visit'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:52:in `map'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:159:in `visit'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:8:in `visit'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/root_node.rb:36:in `css_tree'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/engine.rb:381:in `_render_with_sourcemap'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/engine.rb:298:in `render_with_sourcemap'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:209:in `each'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:473:in `on_file_changed'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:331:in `block in watch'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/vendor/listen/lib/listen/listener.rb:252:in `on_change'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/vendor/listen/lib/listen/adapter.rb:254:in `report_changes'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/vendor/listen/lib/listen/adapter.rb:323:in `poll_changed_directories'
-/Users/travisbatts/.rvm/gems/ruby-2.3.1/gems/sass-3.4.23/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid CSS after \"...ition: relative\": expected \"{\", was \";\"\A         on line 41 of scss/_photos.scss\A         from line 12 of scss/main.scss\A \A 36:   padding: 10px 0;\A 37:   margin: 0 auto;\A 38:   height: 50px;\A 39: <<<<<<< HEAD\A 40: =======\A 41:   position: relative;\A 42:   overflow: hidden;\A 43: }\A 44: \A 45: .current-image-edit {\A 46:   position: absolute;"; }
+h1, h2, h3, h4 {
+  font-family: "Baloo", sans-serif;
+  font-weight: normal; }
+
+body {
+  font-family: "Lato", sans-serif; }
+
+main {
+  padding-top: 80px; }
+
+.center {
+  text-align: center; }
+
+.form-style {
+  position: relative;
+  padding: 5px;
+  width: 600px;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 8px;
+  margin: 0 auto; }
+  .form-style div {
+    float: left;
+    width: 40%;
+    margin: 30px 2.5%; }
+  .form-style input {
+    padding: 4px 4px;
+    border: 1px solid black;
+    height: 15px;
+    margin-bottom: 8px;
+    width: 225px;
+    border-radius: 4px; }
+  .form-style select {
+    padding: 4px 0;
+    border: 1px solid black;
+    height: 25px;
+    margin-bottom: 8px;
+    width: 235px;
+    background: #fff; }
+  .form-style button {
+    width: auto;
+    border: 1px solid #000;
+    padding: 5px 8px;
+    font-size: 16px;
+    margin: 5px auto;
+    cursor: pointer;
+    transition: all ease .5s;
+    border-radius: 4px; }
+  .form-style button:hover {
+    background: #fff;
+    transition: all ease .5s; }
+  .form-style input:focus, .form-style button:focus {
+    outline: none; }
+  .form-style label, .form-style input, .form-style button, .form-style select {
+    display: block; }
+  .form-style label {
+    padding-top: 4px;
+    padding-bottom: 11px; }
+
+.close-form {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 15px;
+  cursor: pointer; }
+
+button {
+  width: auto;
+  border: 1px solid #000;
+  padding: 5px 8px;
+  font-size: 16px;
+  margin: 5px auto;
+  cursor: pointer;
+  transition: all ease .5s;
+  border-radius: 4px; }
+
+button:hover {
+  background: #fff;
+  transition: all ease .5s; }
+
+.form-labels {
+  text-align: right;
+  padding-right: 2px; }
+
+button:focus, select:focus, input:focus, textarea:focus {
+  outline: none; }
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 80px;
+  background: #009cff;
+  align-items: center; }
+  nav > div {
+    text-align: center; }
+  nav h1 {
+    font-size: 42px;
+    font-weight: normal; }
+  nav a {
+    text-decoration: none;
+    color: #fff; }
+
+.searchbar {
+  width: 220px;
+  position: relative;
+  margin: 0 auto; }
+  .searchbar input {
+    background: #FFF;
+    font-size: 18px;
+    width: 100%;
+    border: 1px solid #92959c;
+    border-radius: 20px;
+    padding: 5px 8px; }
+  .searchbar img {
+    position: absolute;
+    right: 0px;
+    top: 5px;
+    height: 20px; }
+
+.flex-container {
+  width: 100%;
+  padding: 0 5px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between; }
+  @media (min-width: 480px) {
+    .flex-container {
+      flex-direction: row;
+      padding: 0; } }
+
+.flex-cell-1-2 {
+  width: 100%; }
+  @media (min-width: 480px) {
+    .flex-cell-1-2 {
+      width: 49%; } }
+
+.flex-cell-1-3 {
+  width: 100%; }
+  @media (min-width: 480px) {
+    .flex-cell-1-3 {
+      width: 32%; } }
+
+.flex-cell-2-3 {
+  width: 100%; }
+  @media (min-width: 480px) {
+    .flex-cell-2-3 {
+      width: 65%; } }
+
+.flex-cell-1-4 {
+  width: 100%; }
+  @media (min-width: 480px) {
+    .flex-cell-1-4 {
+      width: 24%; } }
+
+.flex-cell-3-4 {
+  width: 100%; }
+  @media (min-width: 480px) {
+    .flex-cell-3-4 {
+      width: 74%; } }
+
+.flex-cont-vertical-center {
+  display: flex;
+  align-items: center; }
+
+.flex-right {
+  justify-content: flex-end; }
+
+h2 {
+  text-align: center; }
+
+.location {
+  width: 175px;
+  height: 175px;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer; }
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+
+.centered-container {
+  width: 800px;
+  padding: 8px 8px;
+  margin: 0 auto; }
+
+.current-image-box {
+  width: 80%;
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  border: 1px solid rgba(200, 200, 200, 0.4);
+  border-radius: 5px;
+  position: relative; }
+
+.default-image {
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding-top: 10%; }
+  .default-image h2 {
+    font-size: 56px;
+    color: rgba(200, 200, 200, 0.4);
+    text-align: center; }
+
+.current-image-info {
+  text-align: left;
+  width: 80%;
+  padding: 10px 0;
+  margin: 0 auto;
+  height: 50px;
+  position: relative;
+  overflow: hidden; }
+
+.current-image-edit {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  left: 100%;
+  top: 0;
+  height: 100%;
+  background: #fff;
+  transition: all .5s ease; }
+  .current-image-edit input {
+    padding: 4px 4px;
+    border: 1px solid black;
+    height: 15px;
+    margin-bottom: 8px;
+    width: 200px;
+    border-radius: 4px; }
+  .current-image-edit button {
+    width: 70px;
+    border: 1px solid #000;
+    padding: 5px 8px;
+    font-size: 16px;
+    margin: 5px 10px;
+    cursor: pointer;
+    transition: all ease .5s;
+    border-radius: 4px; }
+  .current-image-edit button:hover {
+    background: #fff;
+    transition: all ease .5s; }
+  .current-image-edit input:focus, .current-image-edit button:focus {
+    outline: none; }
+  .current-image-edit input, .current-image-edit button {
+    display: inline; }
+
+.current-image-edit-active {
+  left: 0;
+  transition: all .5s ease; }
+
+.image-slide-box {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 8px 0; }
+  .image-slide-box img {
+    height: 70px;
+    width: 70px;
+    margin: 0 3px;
+    cursor: pointer; }
+
+.add-photo-form {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(60, 60, 60, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+/*# sourceMappingURL=main.css.map */
