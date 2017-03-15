@@ -13,8 +13,8 @@
       <img ng-src="{{event.img_url}}">
     </div>
   </div>
+
+  <button ui-sref="eventNew">Add Event</button>
+  <button ui-sref="locationEdit({id: vm.location.id})">Edit Location</button>
+
 </section>
-
-
-
-<a ui-sref="locationEdit({id: vm.location.id})">Edit</a>
