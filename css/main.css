@@ -139,7 +139,6 @@ nav {
   height: 80px;
   background: #009cff;
   align-items: center;
-  box-shadow: 0 2px 5px gray;
   z-index: 3; }
   nav > div {
     text-align: center; }
@@ -150,6 +149,16 @@ nav {
   nav a {
     text-decoration: none;
     color: #fff; }
+
+.compass {
+  height: 60px;
+  transform: rotate(0deg);
+  transition: all 1s ease;
+  cursor: pointer; }
+
+.compass-active {
+  transform: rotate(359deg);
+  transition: all 1s ease; }
 
 .searchbar {
   width: 220px;
@@ -168,6 +177,24 @@ nav {
     right: 0px;
     top: 5px;
     height: 20px; }
+
+.cookie-box {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background: #009cff;
+  box-shadow: 0 2px 5px gray;
+  transition: height .5s ease;
+  z-index: 2;
+  overflow: hidden;
+  text-align: center; }
+  .cookie-box h3 a {
+    color: #fff; }
+
+.cookie-box-active {
+  height: 40px; }
 
 .flex-container {
   width: 100%;

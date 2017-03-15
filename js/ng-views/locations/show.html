@@ -1,10 +1,14 @@
+<section class="cookie-box" ng-class="{'cookie-box-active': compassActive}">
+  <h3><a ui-sref="locationIndex">All Locations</a></h3>
+</section>
+
 <section class="location-header flex-container" style="background-image: {{vm.setUrl(vm.location.img_url)}}">
   <h2>{{vm.location.city }}, {{vm.location.state}}</h2>
 </section>
 
 <section class="centered-container">
   <div class="flex-container location-events">
-    <div ng-repeat="event in vm.events | filter: {location_id: vm.location.id}" ui-sref="eventShow({id: event.id})">
+    <div ng-repeat="event in vm.events | filter: {location_id: vm.location.id, name: searchFilter}" ui-sref="eventShow({id: event.id})">
       <h2>{{event.name}}</h2>
       <h4><span>Address:</span> {{event.address}}</h4>
       <h4><span>Category:</span> {{vm.uppercase(event.category)}}</h4>

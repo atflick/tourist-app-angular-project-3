@@ -154,24 +154,28 @@ angular.module("touristapp")
     "$stateParams",
     "$state",
     "EventFactory",
+    "LocationFactory",
     EventIndexControllerFunction
   ])
   .controller("EventNewController", [
     "$stateParams",
     "$state",
     "EventFactory",
+    "LocationFactory",
     EventNewControllerFunction
   ])
   .controller("EventEditController", [
     "$stateParams",
     "$state",
     "EventFactory",
+    "LocationFactory",
     EventEditControllerFunction
   ])
   .controller("EventShowController", [
     "$stateParams",
     "$state",
     "EventFactory",
+    "LocationFactory",
     EventShowControllerFunction
   ])
 
@@ -228,11 +232,12 @@ function LocationShowControllerFunction($stateParams, $state, LocationFactory, E
 
 // Event Controller Functions
 
-function EventIndexControllerFunction($stateParams, $state, EventFactory) {
+function EventIndexControllerFunction($stateParams, $state, EventFactory, LocationFactory) {
   this.events = EventFactory.query();
 }
 
-function EventNewControllerFunction($stateParams, $state, EventFactory) {
+function EventNewControllerFunction($stateParams, $state, EventFactory, LocationFactory) {
+  this.location = LocationFactory.get({id: $stateParams.id});
   this.event = new EventFactory();
   this.addEvent = function(){
     this.event.location_id = $stateParams.id;
@@ -242,8 +247,11 @@ function EventNewControllerFunction($stateParams, $state, EventFactory) {
   }
 }
 
-function EventEditControllerFunction($stateParams, $state, EventFactory) {
-  this.event = EventFactory.get({id: $stateParams.id});
+function EventEditControllerFunction($stateParams, $state, EventFactory, LocationFactory) {
+  let self = this;
+  this.event = EventFactory.get({id: $stateParams.id}, function(res) {
+    self.location = LocationFactory.get({id: res.location_id});
+  })
   this.updateEvent = function(){
     this.event.$update({id: $stateParams.id}, function(){
       $state.go("eventShow", {id: $stateParams.id});
@@ -256,8 +264,11 @@ function EventEditControllerFunction($stateParams, $state, EventFactory) {
   }
 }
 
-function EventShowControllerFunction($stateParams, $state, EventFactory) {
-  this.event = EventFactory.get({id: $stateParams.id});
+function EventShowControllerFunction($stateParams, $state, EventFactory, LocationFactory) {
+  let self = this;
+  this.event = EventFactory.get({id: $stateParams.id}, function(res) {
+    self.location = LocationFactory.get({id: res.location_id});
+  })
 }
 
 // Photos Controllers
@@ -267,6 +278,7 @@ angular.module("touristapp")
     "$state",
     "PhotoFactory",
     "EventFactory",
+    "LocationFactory",
     PhotosIndexControllerFunction
   ])
   .controller("PhotoShowController", [
@@ -277,15 +289,16 @@ angular.module("touristapp")
   ])
 
 // Photos Controller Functions
-function PhotosIndexControllerFunction($stateParams, $state, PhotoFactory, EventFactory) {
+function PhotosIndexControllerFunction($stateParams, $state, PhotoFactory, EventFactory, LocationFactory) {
   let self = this;
   PhotoFactory.query({event_id: $stateParams.event_id}, function(res){
     self.photos = res;
     self.currentImage = self.photos[0];
   })
-  this.event = EventFactory.get({id: $stateParams.event_id});
-
-  // this.currentImageUrl = setUrl(this.currentImage.img_url)
+  EventFactory.get({id: $stateParams.event_id},function(res){
+    self.event = res;
+    self.location = LocationFactory.get({id: res.location_id});
+  })
   this.setCurrentImage = function(photo) {
     this.currentImage = photo;
   }

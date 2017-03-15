@@ -1,9 +1,13 @@
+<section class="cookie-box" ng-class="{'cookie-box-active': compassActive}">
+  <h3><a ui-sref="welcome">Home</a></h3>
+</section>
+
 <section class="centered-container">
   <h2>All Locations</h2>
 
 
   <div class="location-container">
-    <div class="" ng-repeat="location in vm.locations" ui-sref="locationShow({id: location.id})" style="background-image: {{vm.setUrl(location.img_url)}};">
+    <div class="" ng-repeat="location in vm.locations | filter:searchFilter" ui-sref="locationShow({id: location.id})" style="background-image: {{vm.setUrl(location.img_url)}};">
       <h2>{{location.city}}, {{location.state}}</h2>
     </div>
   </div>

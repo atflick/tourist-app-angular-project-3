@@ -1,3 +1,7 @@
+<section class="cookie-box" ng-class="{'cookie-box-active': compassActive}">
+  <h3><a ui-sref="locationIndex">All Locations</a></h3>
+</section>
+
 <section class="centered-container center">
   <h2>Add new location</h2>
 
@@ -8,7 +12,7 @@
       <label>Country</label>
       <label>Image URL</label>
     </div>
-    
+
     <div class="form-inputs">
       <input type="text" placeholder="City" ng-model="vm.location.city">
       <select ng-options="state for state in vm.states" placeholder="State" ng-model="vm.location.state"></select>

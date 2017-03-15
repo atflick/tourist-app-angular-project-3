@@ -7,19 +7,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-resource.min.js"></script>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
     <script src="js/app.js"></script>
   </head>
   <body>
     <nav class="flex-container">
-      <div class="flex-cell-1-2 logo">
+      <div class="flex-cell-1-3 logo">
         <h1><a ui-sref="welcome">Travel Buddy</a></h1>
       </div>
-      <div class="flex-cell-1-2">
+      <div class="flex-cell-1-3">
+        <img class="compass" src="img/compass-icon-6.png" ng-click="compassActive = !compassActive" ng-class="{'compass-active':compassActive}">
+      </div>
+      <div class="flex-cell-1-3">
         <div class="searchbar">
-          <input type="text" placeholder="Filter Results">
-          <img class="search-icon" src="img/search-icon-png.png" alt="">
+          <input type="text" placeholder="Filter Results"  ng-model="searchFilter">
+          <img class="search-icon" src="img/search-icon-png.png">
         </div>
       </div>
     </nav>
