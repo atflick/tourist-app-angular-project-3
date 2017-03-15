@@ -1,9 +1,11 @@
-<h2>All Locations</h2>
+<section class="centered-container">
+  <h2>All Locations</h2>
 
 
-<section class="flex-container">
-  <div class="location" ng-repeat="location in vm.locations" ui-sref="locationShow({id: location.id})" style="background-image: {{vm.setUrl(location.img_url)}};">
-    <a ui-sref="locationShow({id: location.id})">{{location.city}}, {{location.state}}</a>
+  <div class="location-container">
+    <div class="" ng-repeat="location in vm.locations" ui-sref="locationShow({id: location.id})" style="background-image: {{vm.setUrl(location.img_url)}};">
+      <h2>{{location.city}}, {{location.state}}</h2>
+    </div>
   </div>
+  <button ui-sref="locationNew">Add Location</button>
 </section>
-<button ui-sref="locationNew">Add Location</button>

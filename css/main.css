@@ -1,16 +1,9 @@
 @font-face {
   font-family: "Baloo";
-<<<<<<< HEAD
-  src: url("../fonts/BalooBhaina-Regular.woff2") format("woff2"), url("../fonts/BalooBhaina-Regular.woff") format("woff"), url("../fonts/BalooBhaina-Regular.ttf") format("truetype"), url("../fonts/BalooBhaina-Regular.svg") format("svg"); }
-@font-face {
-  font-family: "Lato", sans-serif;
-  src: url("../fonts/Lato-Regular.woff2") format("woff2"), url("../fonts/Lato-Regular.woff") format("woff"), url("../fonts/Lato-Regular.ttf") format("truetype"), url("../fonts/Lato-Regular.svg") format("svg"); }
-=======
   src: url("../fonts/BalooBhaina-Regular.svg") format("svg"), url("../fonts/BalooBhaina-Regular.woff2") format("woff2"), url("../fonts/BalooBhaina-Regular.woff") format("woff"), url("../fonts/BalooBhaina-Regular.ttf") format("truetype"); }
 @font-face {
   font-family: "Lato";
   src: url("../fonts/Lato-Regular.svg") format("svg"), url("../fonts/Lato-Regular.woff2") format("woff2"), url("../fonts/Lato-Regular.woff") format("woff"), url("../fonts/Lato-Regular.ttf") format("truetype"); }
->>>>>>> 3049237d0eb97b701aab68cfecb3eba5d2aadc19
 * {
   margin: 0;
   padding: 0; }
@@ -36,11 +29,7 @@ main {
   padding: 5px;
   width: 600px;
   background: #fff;
-<<<<<<< HEAD
-  border: 1px solid #000;
-=======
-  border: 1px solid rgba(200, 200, 200, 0.4);
->>>>>>> 3049237d0eb97b701aab68cfecb3eba5d2aadc19
+  border: 1px solid #c8c8c8;
   border-radius: 8px;
   margin: 0 auto; }
   .form-style div {
@@ -49,37 +38,24 @@ main {
     margin: 30px 2.5%; }
   .form-style input {
     padding: 4px 4px;
-<<<<<<< HEAD
-    border: 1px solid black;
-=======
-    border: 1px solid rgba(200, 200, 200, 0.4);
->>>>>>> 3049237d0eb97b701aab68cfecb3eba5d2aadc19
+    border: 1px solid #c8c8c8;
     height: 15px;
     margin-bottom: 8px;
     width: 225px;
     border-radius: 4px; }
   .form-style select {
     padding: 4px 0;
-<<<<<<< HEAD
-    border: 1px solid black;
-=======
-    border: 1px solid rgba(200, 200, 200, 0.4);
->>>>>>> 3049237d0eb97b701aab68cfecb3eba5d2aadc19
+    border: 1px solid #c8c8c8;
     height: 25px;
     margin-bottom: 8px;
     width: 235px;
     background: #fff; }
   .form-style button {
-<<<<<<< HEAD
-    width: auto;
-    border: 1px solid #000;
-=======
     font-family: "Lato", sans-serif;
     color: #fff;
     background: #009cff;
     width: auto;
-    border: 1px solid rgba(200, 200, 200, 0.4);
->>>>>>> 3049237d0eb97b701aab68cfecb3eba5d2aadc19
+    border: 1px solid #c8c8c8;
     padding: 5px 8px;
     font-size: 16px;
     margin: 5px auto;
@@ -87,10 +63,7 @@ main {
     transition: all ease .5s;
     border-radius: 4px; }
   .form-style button:hover {
-<<<<<<< HEAD
-=======
     color: #000;
->>>>>>> 3049237d0eb97b701aab68cfecb3eba5d2aadc19
     background: #fff;
     transition: all ease .5s; }
   .form-style input:focus, .form-style button:focus {
@@ -109,16 +82,11 @@ main {
   cursor: pointer; }
 
 button {
-<<<<<<< HEAD
-  width: auto;
-  border: 1px solid #000;
-=======
   color: #fff;
   font-family: "Lato", sans-serif;
   background: #009cff;
   width: auto;
-  border: 1px solid rgba(200, 200, 200, 0.4);
->>>>>>> 3049237d0eb97b701aab68cfecb3eba5d2aadc19
+  border: 1px solid #c8c8c8;
   padding: 5px 8px;
   font-size: 16px;
   margin: 5px auto;
@@ -127,10 +95,7 @@ button {
   border-radius: 4px; }
 
 button:hover {
-<<<<<<< HEAD
-=======
   color: #000;
->>>>>>> 3049237d0eb97b701aab68cfecb3eba5d2aadc19
   background: #fff;
   transition: all ease .5s; }
 
@@ -141,8 +106,6 @@ button:hover {
 button:focus, select:focus, input:focus, textarea:focus {
   outline: none; }
 
-<<<<<<< HEAD
-=======
 .welcome-header {
   display: flex;
   position: absolute;
@@ -169,19 +132,21 @@ button:focus, select:focus, input:focus, textarea:focus {
     font-size: 26px;
     padding: 8px 12px; }
 
->>>>>>> 3049237d0eb97b701aab68cfecb3eba5d2aadc19
 nav {
   position: fixed;
   top: 0;
   left: 0;
   height: 80px;
   background: #009cff;
-  align-items: center; }
+  align-items: center;
+  box-shadow: 0 2px 5px gray;
+  z-index: 3; }
   nav > div {
     text-align: center; }
   nav h1 {
     font-size: 42px;
-    font-weight: normal; }
+    font-weight: normal;
+    text-shadow: 2px 2px 5px gray; }
   nav a {
     text-decoration: none;
     color: #fff; }
@@ -196,7 +161,8 @@ nav {
     width: 100%;
     border: 1px solid #92959c;
     border-radius: 20px;
-    padding: 5px 8px; }
+    padding: 5px 8px;
+    box-shadow: 2px 2px 5px gray; }
   .searchbar img {
     position: absolute;
     right: 0px;
@@ -255,6 +221,52 @@ nav {
 h2 {
   text-align: center; }
 
+.location-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+  .location-container h2 {
+    color: #fff;
+    text-shadow: 2px 2px 3px gray; }
+  .location-container div {
+    border: 0px solid #000;
+    border-radius: 5px;
+    height: 210px;
+    width: 230px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px gray;
+    margin-bottom: 50px;
+    transition: all .2s ease;
+    padding-top: 20px; }
+  .location-container div:hover {
+    box-shadow: 1px 1px 8px darkgray, -1px -1px 8px darkgray; }
+
+.location-header {
+  margin-top: -100px;
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  align-content: center;
+  align-items: center; }
+  .location-header h2 {
+    font-size: 40px;
+    color: #fff;
+    text-shadow: 2px 2px 2px gray;
+    width: 100%; }
+
+.location-events h2 {
+  text-align: left; }
+.location-events div {
+  width: 100%; }
+.location-events h4 {
+  font-family: "Lato", sans-serif; }
+
 .location {
   width: 175px;
   height: 175px;
@@ -267,8 +279,33 @@ h2 {
   flex-direction: row;
   flex-wrap: wrap; }
 
+body {
+  background-color: white; }
+
+.event_index {
+  border-bottom: 1px solid black;
+  box-shadow: 5px 5px 5px #888888; }
+
+.title {
+  border: 1px solid black;
+  width: 20%;
+  padding: 10px;
+  background-color: blue;
+  opacity: 0.5;
+  color: white;
+  margin-left: 100px; }
+
+.posts {
+  border-bottom: 2px, solid black; }
+
+.container {
+  margin: auto;
+  width: 60%;
+  border: 1px solid white;
+  background-color: white; }
+
 .centered-container {
-  width: 800px;
+  max-width: 800px;
   padding: 8px 8px;
   margin: 0 auto; }
 

@@ -3,7 +3,7 @@
 //   {id: 2, city: "New York City", state: "NY", country: "USA", img_url: "", area: ""},
 //   {id: 3, city: "Boston", state: "MA", country: "USA", img_url: "", area: ""}
 // ]
-let states = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
+let states = ["AL","AK","AZ","AR","CA","CO","CT","DC","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
 let countries = ["USA"];
 
 angular
@@ -86,7 +86,7 @@ function RouterFunction($stateProvider){
       controllerAs: "vm"
     })
     .state("photosIndex", {
-      url: "/photos/:id",
+      url: "/events/:event_id/photos/:id",
       templateUrl: "js/ng-views/photos/index.html",
       controller: "PhotosIndexController",
       controllerAs: "vm"
@@ -94,7 +94,7 @@ function RouterFunction($stateProvider){
     .state("photosShow", {
       url: "/photos/show/:id",
       templateUrl: "js/ng-views/photos/show.html",
-      controller: "PhotoShowontroller",
+      controller: "PhotoShowController",
     })
   }
 // Factory Functions
@@ -112,7 +112,7 @@ function EventFactoryFunction($resource) {
 }
 
 function PhotoFactoryFunction($resource) {
-  return $resource("http://localhost:3000/photos/:id", {}, {
+  return $resource("http://localhost:3000/events/:event_id/photos/:id", {}, {
     update: { method: "PUT" },
     query: { method: "GET", isArray: true}
   })
@@ -171,7 +171,6 @@ angular.module("touristapp")
   .controller("EventShowController", [
     "$stateParams",
     "$state",
-    "LocationFactory",
     "EventFactory",
     EventShowControllerFunction
   ])
@@ -195,7 +194,7 @@ function LocationNewControllerFunction($stateParams, $state, LocationFactory) {
       $state.go("locationShow", {id: location.id});
     })
   }
-  this.states = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
+  this.states = ["AL","AK","AZ","AR","CA","CO","CT","DC","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
   this.countries = ["USA"];
 }
 
@@ -211,13 +210,16 @@ function LocationEditControllerFunction($stateParams, $state, LocationFactory) {
       $state.go("locationIndex");
     })
   }
-  this.states = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
+  this.states = ["AL","AK","AZ","AR","CA","CO","CT","DC","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
   this.countries = ["USA"];
 }
 
 function LocationShowControllerFunction($stateParams, $state, LocationFactory, EventFactory) {
   this.location = LocationFactory.get({id: $stateParams.id});
   this.events = EventFactory.query();
+  this.setUrl = function(url) {
+    return `url("${url}")`
+  }
 }
 
 
@@ -250,7 +252,7 @@ function EventEditControllerFunction($stateParams, $state, EventFactory) {
   }
 }
 
-function EventShowControllerFunction($stateParams, $state, LocationFactory, EventFactory) {
+function EventShowControllerFunction($stateParams, $state, EventFactory) {
   this.event = EventFactory.get({id: $stateParams.id});
 }
 
@@ -272,18 +274,23 @@ angular.module("touristapp")
 
 // Photos Controller Functions
 function PhotosIndexControllerFunction($stateParams, $state, PhotoFactory, EventFactory) {
-  this.photos = PhotoFactory.query({event_id: $stateParams.id});
-  this.event = EventFactory.get({id: $stateParams.id});
-  console.log(this.event);
-  this.currentImage = {};
-  this.currentImageUrl = setUrl(this.currentImage.img_url)
+  let self = this;
+  PhotoFactory.query({event_id: $stateParams.event_id}, function(res){
+    self.photos = res;
+    self.currentImage = self.photos[0];
+  })
+  this.event = EventFactory.get({id: $stateParams.event_id});
+
+  // this.currentImageUrl = setUrl(this.currentImage.img_url)
   this.setCurrentImage = function(photo) {
     this.currentImage = photo;
-    this.currentImageUrl = setUrl(photo.img_url)
+  }
+  this.setUrl = function(url) {
+    return `url("${url}")`
   }
   this.photo = new PhotoFactory();
   this.addPhoto = function(){
-    // this.photo.event_id = $stateParams.id;
+    this.photo.event_id = $stateParams.id;
     this.photo.$save(function(){
       $state.reload();
     })
