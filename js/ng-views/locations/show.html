@@ -1,11 +1,20 @@
-<h2>{{vm.location.city }}</h2>
+<section class="location-header flex-container" style="background-image: {{vm.setUrl(vm.location.img_url)}}">
+  <h2>{{vm.location.city }}, {{vm.location.state}}</h2>
+</section>
+
+<section class="centered-container">
+  <div class="flex-container location-events">
+    <div ng-repeat="event in vm.events | filter: {location_id: vm.location.id}" ui-sref="eventShow({id: event.id})">
+      <h2>{{event.name}}</h2>
+      <h4><span>Address:</span> {{event.address}}</h4>
+      <h4><span>Category:</span> {{event.category}}</h4>
+      <h4><span>Phone:</span> {{event.phone}}</h4>
+      <h4><span>Website:</span> <a href="{{event.website_url}}">{{event.website_url}}</a></h4>
+      <img ng-src="{{event.img_url}}">
+    </div>
+  </div>
+</section>
+
 
 
 <a ui-sref="locationEdit({id: vm.location.id})">Edit</a>
-
-<div ng-repeat="event in vm.events | filter: {location_id: vm.location.id}">
-  <h2><a ui-sref="eventShow({id: event.id})">{{event.name}}</a></h2>
-    <p>{{event.date}}, {{event.time}}</p>
-    <p>About:{{event.description}}</p>
-    <p>Popularity: {{event.rating}}</p>
-</div>

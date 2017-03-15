@@ -245,6 +245,28 @@ h2 {
   .location-container div:hover {
     box-shadow: 1px 1px 8px darkgray, -1px -1px 8px darkgray; }
 
+.location-header {
+  margin-top: -100px;
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  align-content: center;
+  align-items: center; }
+  .location-header h2 {
+    font-size: 40px;
+    color: #fff;
+    text-shadow: 2px 2px 2px gray;
+    width: 100%; }
+
+.location-events h2 {
+  text-align: left; }
+.location-events div {
+  width: 100%; }
+.location-events h4 {
+  font-family: "Lato", sans-serif; }
+
 .centered-container {
   max-width: 800px;
   padding: 8px 8px;

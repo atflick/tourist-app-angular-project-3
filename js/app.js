@@ -3,7 +3,7 @@
 //   {id: 2, city: "New York City", state: "NY", country: "USA", img_url: "", area: ""},
 //   {id: 3, city: "Boston", state: "MA", country: "USA", img_url: "", area: ""}
 // ]
-let states = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
+let states = ["AL","AK","AZ","AR","CA","CO","CT","DC","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
 let countries = ["USA"];
 
 angular
@@ -194,7 +194,7 @@ function LocationNewControllerFunction($stateParams, $state, LocationFactory) {
       $state.go("locationShow", {id: location.id});
     })
   }
-  this.states = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
+  this.states = ["AL","AK","AZ","AR","CA","CO","CT","DC","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
   this.countries = ["USA"];
 }
 
@@ -210,13 +210,16 @@ function LocationEditControllerFunction($stateParams, $state, LocationFactory) {
       $state.go("locationIndex");
     })
   }
-  this.states = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
+  this.states = ["AL","AK","AZ","AR","CA","CO","CT","DC","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
   this.countries = ["USA"];
 }
 
 function LocationShowControllerFunction($stateParams, $state, LocationFactory, EventFactory) {
   this.location = LocationFactory.get({id: $stateParams.id});
   this.events = EventFactory.query();
+  this.setUrl = function(url) {
+    return `url("${url}")`
+  }
 }
 
 
@@ -272,10 +275,10 @@ angular.module("touristapp")
 
 // Photos Controller Functions
 function PhotosIndexControllerFunction($stateParams, $state, PhotoFactory, EventFactory) {
-
+  let self = this;
   PhotoFactory.query({event_id: $stateParams.event_id}, function(res){
-    this.photos = res;
-    this.currentImage = this.photos[0];
+    self.photos = res;
+    self.currentImage = self.photos[0];
   })
   this.event = EventFactory.get({id: $stateParams.event_id});
 
