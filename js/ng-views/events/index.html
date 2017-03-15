@@ -1,5 +1,58 @@
-<h2>All Events</h2>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/lib/w3.css">
+<style>
+.mySlides {display:none;}
+</style>
+<body>
 
+<<<<<<< HEAD
+<h2 class="w3-center">Automatic Slideshow</h2>
+
+<div class="w3-content w3-section" style="max-width:500px">
+  <img class="mySlides" src="img_la.jpg" style="width:100%">
+  <img class="mySlides" src="img_ny.jpg" style="width:100%">
+  <img class="mySlides" src="img_chicago.jpg" style="width:100%">
+</div>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
+
+</body>
+</html>
+
+
+
+<!-- <div class ="header">
+  <div class ="title">
+  <h2>All Events</h2>
+  </div>
+</div> -->
+
+
+
+<div class ="container">
+
+
+
+<div class ="event_index" ng-repeat="event in vm.events">
+  <h2><a ui-sref="eventShow({id: location.id})">{{event.name}}</a></h2>
+=======
 <div id="event-nav-filter">
   <input type="checkbox" ng-model="filter['Dining']" />Dining
   <input type="checkbox" ng-model="filter['entertainment']" />Entertainment
@@ -11,9 +64,12 @@
 <!-- <div class="event_index" ng-repeat="event in vm.events"> -->
 <div class="event_index" ng-repeat="event in vm.events" ui-sref="eventShow({id: event.id})";>
   <h2><a ui-sref="eventShow({id: event.id})">{{event.name}}</a></h2>
+>>>>>>> 792891fed7c609a50c11c71ca621b3615f0f999a
     <p>{{event.date}}, {{event.time}}</p>
     <p>About:{{event.description}}</p>
     <p>Popularity: {{event.rating}}</p>
-</div>
+
 
 <button ui-sref="eventNew">Add an Event</a>
+</div>
+</div>

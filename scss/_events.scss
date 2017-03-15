@@ -1,0 +1,42 @@
+
+
+body {
+  background-color: white;
+}
+.event_index {
+  border-bottom: 1px solid black;
+  box-shadow: 5px 5px 5px #888888;
+
+}
+
+// .header {
+//   background-image: url("http://www.alleneventcenter.com/ImageRepository/Document?documentID=319");
+//  background-repeat: no-repeat;
+//  background-position: cover;
+//  height: 500px;
+//  width: 100%;
+//  text-align: center;
+//  padding-left: -15px;
+// }
+
+.title {
+  border: 1px solid black;
+  width: 20%;
+  padding: 10px;
+  background-color: blue;
+  opacity: 0.5;
+  color: white;
+  margin-left: 100px;
+
+}
+
+.posts {
+  border-bottom: 2px, solid black;
+}
+
+.container {
+  margin: auto;
+  width: 60%;
+  border: 1px solid white;
+  background-color: white;
+}

@@ -267,6 +267,43 @@ h2 {
 .location-events h4 {
   font-family: "Lato", sans-serif; }
 
+.location {
+  width: 175px;
+  height: 175px;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer; }
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+
+body {
+  background-color: white; }
+
+.event_index {
+  border-bottom: 1px solid black;
+  box-shadow: 5px 5px 5px #888888; }
+
+.title {
+  border: 1px solid black;
+  width: 20%;
+  padding: 10px;
+  background-color: blue;
+  opacity: 0.5;
+  color: white;
+  margin-left: 100px; }
+
+.posts {
+  border-bottom: 2px, solid black; }
+
+.container {
+  margin: auto;
+  width: 60%;
+  border: 1px solid white;
+  background-color: white; }
+
 .centered-container {
   max-width: 800px;
   padding: 8px 8px;
