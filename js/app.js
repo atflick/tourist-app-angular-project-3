@@ -251,8 +251,7 @@ function EventEditControllerFunction($stateParams, $state, EventFactory) {
 }
 
 function EventShowControllerFunction($stateParams, $state, LocationFactory, EventFactory) {
-  this.location = LocationFactory.get({id: $stateParams.id});
-  this.events = EventFactory.query();
+  this.event = EventFactory.get({id: $stateParams.id});
 }
 
 // Photos Controllers

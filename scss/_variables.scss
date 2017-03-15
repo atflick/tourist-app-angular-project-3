@@ -1,27 +1,28 @@
 // Colors
 $skyblue: #009cff;
 $darkgray: #92959c;
-
+$lightgray: rgba(200,200,200, .4);
+$tan: rgba(218, 200, 169, 1);
 
 // Fonts
 @font-face {
   font-family: "Baloo";
           src:
+          url('../fonts/BalooBhaina-Regular.svg') format('svg'),
           url('../fonts/BalooBhaina-Regular.woff2') format('woff2'),
           url('../fonts/BalooBhaina-Regular.woff') format('woff'),
-          url('../fonts/BalooBhaina-Regular.ttf') format('truetype'),
-          url('../fonts/BalooBhaina-Regular.svg') format('svg');
+          url('../fonts/BalooBhaina-Regular.ttf') format('truetype');
         }
 
 $header-font: "Baloo", sans-serif;
 
 @font-face {
-  font-family: "Lato", sans-serif;
+  font-family: "Lato";
           src:
+          url('../fonts/Lato-Regular.svg') format('svg'),
           url('../fonts/Lato-Regular.woff2') format('woff2'),
           url('../fonts/Lato-Regular.woff') format('woff'),
-          url('../fonts/Lato-Regular.ttf') format('truetype'),
-          url('../fonts/Lato-Regular.svg') format('svg');
+          url('../fonts/Lato-Regular.ttf') format('truetype');
         }
 
 $body-font: "Lato", sans-serif;
