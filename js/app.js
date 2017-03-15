@@ -10,7 +10,6 @@ angular
   .module("touristapp",[
     "ui.router",
     "ngResource"
-    "leaflet-directive"
   ])
   .config([
     "$stateProvider",
