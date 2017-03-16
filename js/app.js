@@ -119,8 +119,8 @@ function PhotoFactoryFunction($resource) {
 }
 
 // test function for comments
-function CommetnsFactoryFunction($resource) {
-  return $resource("http://localhost:3000/events/:event_id/photos/:id", {}, {
+function CommentsFactoryFunction($resource) {
+  return $resource("http://localhost:3000/events/:event_id/comments/:id", {}, {
     update: { method: "PUT" },
     query: { method: "GET", isArray: true}
   })
@@ -180,6 +180,7 @@ angular.module("touristapp")
     "$stateParams",
     "$state",
     "EventFactory",
+    "CommentsFactory",
     EventShowControllerFunction
   ])
 
@@ -262,8 +263,8 @@ function EventEditControllerFunction($stateParams, $state, EventFactory) {
     })
   }
 }
-
-function EventShowControllerFunction($stateParams, $state, EventFactory) {
+//living within this
+function EventShowControllerFunction($stateParams, $state, EventFactory, CommentsFactory) {
   this.event = EventFactory.get({id: $stateParams.id});
 }
 
