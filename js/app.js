@@ -305,8 +305,8 @@ function EventShowControllerFunction($stateParams, $state, $scope, EventFactory,
   // })
   angular.extend($scope, {
     center: {
-        lat: 40.095,
-        lng: -3.823,
+        lat: 35.09,
+        lng: -90.79,
         zoom: 4
     },
     defaults: {
