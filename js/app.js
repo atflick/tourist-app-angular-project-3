@@ -7,7 +7,7 @@ let states = ["AL","AK","AZ","AR","CA","CO","CT","DC","DE","FL","GA","HI","ID","
 let countries = ["USA"];
 
 angular
-  .module("touristapp",[
+  .module("touristapp", [
     "ui.router",
     "ngResource"
   ])
@@ -27,7 +27,10 @@ angular
     "$resource",
     PhotoFactoryFunction
   ])
-
+  .factory("CommentFactory", [
+    "$resource",
+    CommentFactoryFunction
+  ])
 
 // Routes
 function RouterFunction($stateProvider){
@@ -98,6 +101,7 @@ function RouterFunction($stateProvider){
       controller: "PhotoShowController",
     })
   }
+
 // Factory Functions
 
 function LocationFactoryFunction($resource) {
@@ -120,12 +124,13 @@ function PhotoFactoryFunction($resource) {
 }
 
 // test function for comments
-function CommentsFactoryFunction($resource) {
+function CommentFactoryFunction($resource) {
   return $resource("http://localhost:3000/events/:event_id/comments/:id", {}, {
     update: { method: "PUT" },
     query: { method: "GET", isArray: true}
   })
 }
+
 
 // Separating our controllers by data model since this might get long and ugly.
 angular.module("touristapp")
@@ -265,10 +270,18 @@ function EventEditControllerFunction($stateParams, $state, EventFactory) {
   }
 }
 //living within this
-function EventShowControllerFunction($stateParams, $state, EventFactory, CommentsFactory) {
+function EventShowControllerFunction($stateParams, $state, EventFactory, CommentFactory) {
   this.event = EventFactory.get({id: $stateParams.id});
+  this.comment = new CommentsFactory();
+  this.addComment = function(){
+    this.photo.event_id = $stateParams.event_id;
+    this.photo.$save({event_id: $stateParams.event_id},function(){
+      $state.reload();
+    })
+  }
+  this.comments= CommentFactory.query({event_id: $stateParams.id});
 }
-
+///// edit this
 // Photos Controllers
 angular.module("touristapp")
   .controller("PhotosIndexController", [

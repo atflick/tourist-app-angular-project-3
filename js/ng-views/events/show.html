@@ -24,14 +24,17 @@
 </section>
 
 <section class="comments-form" ng-show="newCommentsActive">
-  <form class="form-style" ng-submit="vm.addComment()" ng-repeat="comment in comments">
+<div ng-repeat= "comment in vm.comments">
+<h3>{{comment.title}}</h3>
+</div>
+  <form class="form-style" ng-submit="vm.addComment()">
     <div class="form-labels">
       <label>Title</label>
       <label>Comment</label>
     </div>
     <div class="form-inputs">
-      <input type="text" placeholder="Title" ng-model="vm.comments.title">
-      <input type="text" placeholder="Comment" ng-model="vm.comments.comment">
+      <input type="text" placeholder="Title" ng-model="vm.comment.author">
+      <input type="text" placeholder="Comment" ng-model="vm.comment.comment">
     </div>
     <button type="submit">Add Comment</button>
   </form>
