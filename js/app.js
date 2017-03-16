@@ -281,17 +281,20 @@ function EventEditControllerFunction($stateParams, $state, EventFactory, Locatio
 
 function EventShowControllerFunction($stateParams, $state, EventFactory, LocationFactory, CommentFactory) {
   let self = this;
-  this.event = EventFactory.get({id: $stateParams.id}, function(res) {
+  EventFactory.get({id: $stateParams.id}, function(res) {
+    self.event = res;
     self.location = LocationFactory.get({id: res.location_id});
+    self.comments = CommentFactory.query({event_id: res.id});
+      console.log(self.comments, res.id);
   })
-  this.comment = new CommentsFactory();
+  this.comment = new CommentFactory();
   this.addComment = function(){
     this.photo.event_id = $stateParams.event_id;
     this.photo.$save({event_id: $stateParams.event_id},function(){
       $state.reload();
     })
   }
-  this.comments= CommentFactory.query({event_id: $stateParams.id});
+
 }
 
 // Photos Controllers
