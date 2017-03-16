@@ -320,7 +320,8 @@ h2 {
     width: 100%;
     object-fit: cover;
     border: 1px solid #c8c8c8;
-    border-radius: 5px; }
+    border-radius: 5px;
+    cursor: pointer; }
   .location-events a {
     text-transform: lowercase; }
 

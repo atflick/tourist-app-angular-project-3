@@ -27,7 +27,7 @@
       </div>
 
       <div class="event-img">
-        <img ng-src="{{event.img_url}}">
+        <img ui-sref="eventShow({id: event.id})" ng-src="{{event.img_url}}">
       </div>
 
     </div>
