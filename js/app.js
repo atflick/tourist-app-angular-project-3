@@ -106,26 +106,26 @@ function RouterFunction($stateProvider){
 // Factory Functions
 
 function LocationFactoryFunction($resource) {
-  return $resource("http://localhost:3000/locations/:id", {}, {
+  return $resource("https://wdi-travel-buddy.herokuapp.com/locations/:id", {}, {
     update: { method: "PUT" }
   })
 }
 
 function EventFactoryFunction($resource) {
-  return $resource("http://localhost:3000/events/:id", {}, {
+  return $resource("https://wdi-travel-buddy.herokuapp.com/events/:id", {}, {
     update: { method: "PUT" }
   })
 }
 
 function PhotoFactoryFunction($resource) {
-  return $resource("http://localhost:3000/events/:event_id/photos/:id", {}, {
+  return $resource("https://wdi-travel-buddy.herokuapp.com/events/:event_id/photos/:id", {}, {
     update: { method: "PUT" },
     query: { method: "GET", isArray: true}
   })
 }
 
 function CommentFactoryFunction($resource) {
-  return $resource("http://localhost:3000/events/:event_id/comments/:id", {}, {
+  return $resource("https://wdi-travel-buddy.herokuapp.com/events/:event_id/comments/:id", {}, {
     update: { method: "PUT" },
     query: { method: "GET", isArray: true}
   })
@@ -305,8 +305,8 @@ function EventShowControllerFunction($stateParams, $state, $scope, EventFactory,
   // })
   angular.extend($scope, {
     center: {
-        lat: 40.095,
-        lng: -3.823,
+        lat: 35.09,
+        lng: -90.79,
         zoom: 4
     },
     defaults: {
