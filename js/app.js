@@ -125,7 +125,7 @@ function PhotoFactoryFunction($resource) {
 
 // test function for comments
 function CommentFactoryFunction($resource) {
-  return $resource("http://localhost:3000/events/:event_id/comments/:id", {}, {
+  return $resource("https://wdi-travel-buddy.herokuapp.com/events/:event_id/comments/:id", {}, {
     update: { method: "PUT" },
     query: { method: "GET", isArray: true}
   })
