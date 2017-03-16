@@ -386,6 +386,11 @@ h2 {
   overflow: hidden;
   transition: height .8s ease;
   padding: 20px 0; }
+  .comments h4 {
+    margin-bottom: -4px; }
+  .comments h5 {
+    border-bottom: 1px dashed #c8c8c8;
+    padding-bottom: 6px; }
 
 .comment-collapsed {
   height: 0px;
@@ -396,6 +401,24 @@ h2 {
   margin: 10px auto 5px auto;
   width: 40px;
   cursor: pointer; }
+
+.comment-form input {
+  padding: 4px 4px;
+  border: 1px solid #c8c8c8;
+  height: 15px;
+  margin-bottom: 8px;
+  width: 225px;
+  border-radius: 4px;
+  display: block; }
+.comment-form textarea {
+  margin-top: 10px;
+  padding: 4px 4px;
+  border: 1px solid #c8c8c8;
+  height: 15px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  width: 425px;
+  height: 100px; }
 
 .centered-container {
   max-width: 800px;

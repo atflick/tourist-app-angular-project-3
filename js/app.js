@@ -292,7 +292,7 @@ function EventShowControllerFunction($stateParams, $state, $scope, EventFactory,
     console.log($stateParams.id);
     this.comment.event_id = $stateParams.id;
     this.comment.$save({event_id: $stateParams.id},function(){
-      // $state.reload();
+      $state.reload();
     })
   }
 

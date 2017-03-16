@@ -59,6 +59,13 @@
   overflow: hidden;
   transition: height .8s ease;
   padding: 20px 0;
+  h4 {
+    margin-bottom: -4px;
+  }
+  h5 {
+    border-bottom: 1px dashed $lightgray;
+    padding-bottom: 6px;
+  }
 }
 
 .comment-collapsed {
@@ -71,4 +78,27 @@
   margin: 10px auto 5px auto;
   width: 40px;
   cursor: pointer;
+}
+
+.comment-form {
+  input {
+    padding: 4px 4px;
+    border: 1px solid $lightgray;
+    height: 15px;
+    margin-bottom: 8px;
+    width: 225px;
+    border-radius: 4px;
+    display: block;
+  }
+  textarea {
+    margin-top: 10px;
+    padding: 4px 4px;
+    border: 1px solid $lightgray;
+    height: 15px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    width: 425px;
+    height: 100px;
+  }
+
 }
