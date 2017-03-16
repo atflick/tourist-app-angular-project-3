@@ -20,5 +20,19 @@
 
   <button ui-sref="photosIndex({event_id: vm.event.id})">View Photos</button>
   <button ui-sref="eventEdit({id: vm.event.id})">Edit Event</button>
-  
+
+</section>
+
+<section class="comments-form" ng-show="newCommentsActive">
+  <form class="form-style" ng-submit="vm.addComment()" ng-repeat="comment in comments">
+    <div class="form-labels">
+      <label>Title</label>
+      <label>Comment</label>
+    </div>
+    <div class="form-inputs">
+      <input type="text" placeholder="Title" ng-model="vm.comments.title">
+      <input type="text" placeholder="Comment" ng-model="vm.comments.comment">
+    </div>
+    <button type="submit">Add Comment</button>
+  </form>
 </section>
