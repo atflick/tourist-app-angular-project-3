@@ -30,7 +30,9 @@
       <button ui-sref="eventEdit({id: vm.event.id})">Edit Event</button>
     </div>
   </div>
-
+  <div>
+    <leaflet height="300px" width="500px" center="center"></leaflet>
+  </div>
   <div class="comment-box">
     <h2>Comments</h2>
     <div class="comments" ng-class="{'comment-collapsed' : !commentCollapse}">

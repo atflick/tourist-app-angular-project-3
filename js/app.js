@@ -9,7 +9,8 @@ let countries = ["USA"];
 angular
   .module("touristapp",[
     "ui.router",
-    "ngResource"
+    "ngResource",
+    "leaflet-directive"
   ])
   .config([
     "$stateProvider",
@@ -175,6 +176,7 @@ angular.module("touristapp")
   .controller("EventShowController", [
     "$stateParams",
     "$state",
+    "$scope",
     "EventFactory",
     "LocationFactory",
     EventShowControllerFunction
@@ -265,11 +267,28 @@ function EventEditControllerFunction($stateParams, $state, EventFactory, Locatio
   }
 }
 
-function EventShowControllerFunction($stateParams, $state, EventFactory, LocationFactory) {
+function EventShowControllerFunction($stateParams, $state, $scope, EventFactory, LocationFactory) {
   let self = this;
   this.event = EventFactory.get({id: $stateParams.id}, function(res) {
     self.location = LocationFactory.get({id: res.location_id});
   })
+  $.ajax({
+    type: "get",
+    url: url/?address=#{this.event.adress},
+    dataType: "json"
+  }).done(function(response) {
+    console.log(response)
+  })
+  angular.extend($scope, {
+    center: {
+        lat: 40.095,
+        lng: -3.823,
+        zoom: 4
+    },
+    defaults: {
+        scrollWheelZoom: false
+    }
+  });
 }
 
 // Photos Controllers
