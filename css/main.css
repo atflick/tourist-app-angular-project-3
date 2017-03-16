@@ -139,7 +139,7 @@ nav {
   height: 80px;
   background: #009cff;
   align-items: center;
-  z-index: 3; }
+  z-index: 4; }
   nav > div {
     text-align: center; }
   nav h1 {
@@ -187,7 +187,7 @@ nav {
   background: #009cff;
   box-shadow: 0 2px 5px gray;
   transition: height .5s ease;
-  z-index: 2;
+  z-index: 3;
   overflow: hidden;
   text-align: center; }
   .cookie-box h3 a {

@@ -6,7 +6,7 @@ nav {
   background: $skyblue;
   align-items: center;
 
-  z-index: 3;
+  z-index: 4;
   > div {
     text-align: center;
   }
@@ -62,7 +62,7 @@ nav {
   background: $skyblue;
   box-shadow: 0 2px 5px gray;
   transition: height .5s ease;
-  z-index: 2;
+  z-index: 3;
   overflow: hidden;
   text-align: center;
   h3 {
