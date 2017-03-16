@@ -40,9 +40,9 @@
         <h4>{{comment.comment}}</h4>
         <h5>By: {{comment.author}} at {{comment.created_at}}</h5>
       </div>
-      <form class="" ng-click="">
-        <textarea rows="8" cols="80" placeholder="Leave comment"></textarea>
-        <input type="text" placeholder="Author">
+      <form class="" ng-submit="vm.addComment()">
+        <textarea rows="8" cols="80" placeholder="Leave comment" ng-model="vm.comment.comment"></textarea>
+        <input type="text" placeholder="Author" ng-model="vm.comment.author">
         <button type="submit" name="button">Comment</button>
       </form>
     </div>

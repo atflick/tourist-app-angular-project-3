@@ -28,6 +28,10 @@ angular
     "$resource",
     PhotoFactoryFunction
   ])
+  .factory("CommentFactory", [
+    "$resource",
+    CommentFactoryFunction
+  ])
 
 
 // Routes
@@ -120,6 +124,13 @@ function PhotoFactoryFunction($resource) {
   })
 }
 
+function CommentFactoryFunction($resource) {
+  return $resource("http://localhost:3000/events/:event_id/comments/:id", {}, {
+    update: { method: "PUT" },
+    query: { method: "GET", isArray: true}
+  })
+}
+
 // Separating our controllers by data model since this might get long and ugly.
 angular.module("touristapp")
   .controller("WelcomeController", [
@@ -179,6 +190,7 @@ angular.module("touristapp")
     "$scope",
     "EventFactory",
     "LocationFactory",
+    "CommentFactory",
     EventShowControllerFunction
   ])
 
@@ -267,7 +279,7 @@ function EventEditControllerFunction($stateParams, $state, EventFactory, Locatio
   }
 }
 
-function EventShowControllerFunction($stateParams, $state, $scope, EventFactory, LocationFactory) {
+function EventShowControllerFunction($stateParams, $state, $scope, EventFactory, LocationFactory, CommentFactory) {
   let self = this;
   EventFactory.get({id: $stateParams.id}, function(res) {
     self.event = res;
@@ -277,12 +289,13 @@ function EventShowControllerFunction($stateParams, $state, $scope, EventFactory,
     })
   this.comment = new CommentFactory();
   this.addComment = function(){
-       this.photo.event_id = $stateParams.event_id;
-       this.photo.$save({event_id: $stateParams.event_id},function(){
-         $state.reload();
-       })
-     }
+    console.log($stateParams.id);
+    this.comment.event_id = $stateParams.id;
+    this.comment.$save({event_id: $stateParams.id},function(){
+      // $state.reload();
+    })
   }
+}
   // $.ajax({
   //   type: "get",
   //   url: url/?address=#{this.event.address},
@@ -360,22 +373,3 @@ function PhotoShowControllerFunction($stateParams, $state, PhotoFactory) {
 function setUrl(url) {
   return `url("${url}")`
 }
-
-/////Functions for event category selection boxes
-// function filterByCategory(event) {
-//   // Display the event if
-//   var displayEvent =
-//       // the event's category checkbox is checked (`filter[category]` is true)
-//       $scope.filter[event.category] ||   // or
-//
-//       // no checkbox is checked (all `filter[...]` are false)
-//       noFilter($scope.filter);
-//
-//   return showEvent;
-// };
-//
-// function noFilter(filterObj) {
-//   return Object.
-//     keys(filterObj).
-//     every(function (key) { return !filterObj[key]; });
-// }
