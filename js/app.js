@@ -7,7 +7,7 @@ let states = ["AL","AK","AZ","AR","CA","CO","CT","DC","DE","FL","GA","HI","ID","
 let countries = ["USA"];
 
 angular
-  .module("touristapp",[
+  .module("touristapp", [
     "ui.router",
     "ngResource"
   ])
@@ -27,7 +27,10 @@ angular
     "$resource",
     PhotoFactoryFunction
   ])
-
+  .factory("CommentFactory", [
+    "$resource",
+    CommentFactoryFunction
+  ])
 
 // Routes
 function RouterFunction($stateProvider){
@@ -98,6 +101,7 @@ function RouterFunction($stateProvider){
       controller: "PhotoShowController",
     })
   }
+
 // Factory Functions
 
 function LocationFactoryFunction($resource) {
@@ -118,6 +122,15 @@ function PhotoFactoryFunction($resource) {
     query: { method: "GET", isArray: true}
   })
 }
+
+// test function for comments
+function CommentFactoryFunction($resource) {
+  return $resource("http://localhost:3000/events/:event_id/comments/:id", {}, {
+    update: { method: "PUT" },
+    query: { method: "GET", isArray: true}
+  })
+}
+
 
 // Separating our controllers by data model since this might get long and ugly.
 angular.module("touristapp")
@@ -177,6 +190,7 @@ angular.module("touristapp")
     "$state",
     "EventFactory",
     "LocationFactory",
+    "CommentFactory",
     EventShowControllerFunction
   ])
 
@@ -265,11 +279,22 @@ function EventEditControllerFunction($stateParams, $state, EventFactory, Locatio
   }
 }
 
-function EventShowControllerFunction($stateParams, $state, EventFactory, LocationFactory) {
+function EventShowControllerFunction($stateParams, $state, EventFactory, LocationFactory, CommentFactory) {
   let self = this;
-  this.event = EventFactory.get({id: $stateParams.id}, function(res) {
+  EventFactory.get({id: $stateParams.id}, function(res) {
+    self.event = res;
     self.location = LocationFactory.get({id: res.location_id});
+    self.comments = CommentFactory.query({event_id: res.id});
+      console.log(self.comments, res.id);
   })
+  this.comment = new CommentFactory();
+  this.addComment = function(){
+    this.photo.event_id = $stateParams.event_id;
+    this.photo.$save({event_id: $stateParams.event_id},function(){
+      $state.reload();
+    })
+  }
+
 }
 
 // Photos Controllers
