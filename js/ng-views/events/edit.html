@@ -1,3 +1,7 @@
+<section class="cookie-box" ng-class="{'cookie-box-active': compassActive}">
+  <h3><a ui-sref="locationIndex">All Locations</a> / <a ui-sref="locationShow({id: vm.location.id})">{{vm.location.city}}</a> / <a ui-sref="eventShow({id: vm.event.id})">{{vm.event.name}}</a></h3>
+</section>
+
 <section class="centered-container">
   <h2>Edit Event</h2>
 
@@ -20,7 +24,13 @@
 
     <div class="form-inputs event-form-col">
       <input type="text" placeholder="Name" ng-model="vm.event.name">
-      <input type="text" placeholder="Entertainment, Dining, etc." ng-model="vm.event.category">
+      <select ng-model="vm.event.category">
+        <option value="dining">Dining</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="sports">Sports</option>
+        <option value="activities">Activities</option>
+        <option value="culture">Culture</option>
+      </select>
       <input type="text" placeholder="Description" ng-model="vm.event.description">
       <input type="text" placeholder="Date" ng-model="vm.event.date">
       <input type="text" placeholder="Time" ng-model="vm.event.time">

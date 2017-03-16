@@ -1,41 +1,52 @@
-<section class="centered-container">
-
-  <div class="event_show">
-  <h2>{{ vm.event.name }}</h2>
-
-  <hr>
-
-  <div>
-    <h3>{{ vm.event.address }}</h3>
-    <h3>{{ vm.event.phone_number }}</h3>
-    <h3><a href="{{vm.event.website_url}}">{{vm.event.website_url}}</a></h3>
-    <h3>{{ vmevent.date }}</h3>
-    <h3>{{ vm.event.time }}</h3>
-    <h3>Category: {{ vm.event.category }}</h3>
-  </div>
-  <img class="events_show_img" ng-src="{{vm.event.img_url}}">
-  <div>
-    <h4>{{ vm.event.description }}</h4>
-  </div>
-
-  <button ui-sref="photosIndex({event_id: vm.event.id})">View Photos</button>
-  <button ui-sref="eventEdit({id: vm.event.id})">Edit Event</button>
-
+<section class="cookie-box" ng-class="{'cookie-box-active': compassActive}">
+  <h3><a ui-sref="locationIndex">All Locations</a> / <a ui-sref="locationShow({id: vm.location.id})">{{vm.location.city}}</a></h3>
 </section>
 
-<section class="comments-form" ng-show="newCommentsActive">
-<div ng-repeat= "comment in vm.comments">
-<h3>{{comment.title}}</h3>
-</div>
-  <form class="form-style" ng-submit="vm.addComment()">
-    <div class="form-labels">
-      <label>Title</label>
-      <label>Comment</label>
+<section class="centered-container">
+
+  <div class="event-show flex-container">
+    <h2>{{ vm.event.name }}</h2>
+
+    <div class="flex-cell-2-3">
+      <h3><span>Address:</span>  {{ vm.event.address }}</h3>
+      <h3><span>Category:</span>  {{ vm.event.category }}</h3>
+      <h3><span>Phone:</span>  {{ vm.event.phone_number }}</h3>
+      <h3><span>Website:  </span><a href="{{vm.event.website_url}}">{{vm.event.website_url}}</a></h3>
+      <h3 ng-show="vm.event.date"><span>Date:</span>  {{ vm.event.date }}</h3>
+      <h3 ng-show="vm.event.time"><span>Time:</span>  {{ vm.event.time }}</h3>
+      <h3><span>Rating: </span>  {{ vm.event.rating }}</h3>
+      <h3><a class="maps-link" href="{{ vm.event.map_url }}">Google Maps</a></h3>
+      <h3><span>Description:</span></h3>
+      <p>{{vm.event.description}}</p>
     </div>
-    <div class="form-inputs">
-      <input type="text" placeholder="Title" ng-model="vm.comment.author">
-      <input type="text" placeholder="Comment" ng-model="vm.comment.comment">
+
+    <div class="flex-cell-1-3">
+      <img class="" ng-src="{{vm.event.img_url}}">
     </div>
-    <button type="submit">Add Comment</button>
-  </form>
+
+    <div>
+      <h4>{{ vm.event.description }}</h4>
+      <button ui-sref="photosIndex({event_id: vm.event.id})">View Photos</button>
+      <button ui-sref="eventEdit({id: vm.event.id})">Edit Event</button>
+    </div>
+  </div>
+
+  <div class="comment-box">
+    <h2>Comments</h2>
+    <div class="comments" ng-class="{'comment-collapsed' : !commentCollapse}">
+      <div ng-repeat="comment in vm.comments">
+        <h4>{{comment.comment}}</h4>
+        <h5>By: {{comment.author}} at {{comment.created_at}}</h5>
+      </div>
+      <form class="" ng-click="">
+        <textarea rows="8" cols="80" placeholder="Leave comment"></textarea>
+        <input type="text" placeholder="Author">
+        <button type="submit" name="button">Comment</button>
+      </form>
+    </div>
+    <div class="center">
+      <img class="comment-arrow" src="img/arrow-down2.png" ng-click="commentCollapse = !commentCollapse">
+    </div>
+  </div>
+
 </section>

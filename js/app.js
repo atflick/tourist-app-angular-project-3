@@ -72,7 +72,7 @@ function RouterFunction($stateProvider){
       controllerAs: "vm"
     })
     .state("eventNew", {
-      url: "/events/new",
+      url: "/events/new/:id",
       templateUrl: "js/ng-views/events/new.html",
       controller: "EventNewController",
       controllerAs: "vm"
@@ -168,25 +168,29 @@ angular.module("touristapp")
     "$stateParams",
     "$state",
     "EventFactory",
+    "LocationFactory",
     EventIndexControllerFunction
   ])
   .controller("EventNewController", [
     "$stateParams",
     "$state",
     "EventFactory",
+    "LocationFactory",
     EventNewControllerFunction
   ])
   .controller("EventEditController", [
     "$stateParams",
     "$state",
     "EventFactory",
+    "LocationFactory",
     EventEditControllerFunction
   ])
   .controller("EventShowController", [
     "$stateParams",
     "$state",
     "EventFactory",
-    "CommentsFactory",
+    "LocationFactory",
+    "CommentFactory",
     EventShowControllerFunction
   ])
 
@@ -243,21 +247,26 @@ function LocationShowControllerFunction($stateParams, $state, LocationFactory, E
 
 // Event Controller Functions
 
-function EventIndexControllerFunction($stateParams, $state, EventFactory) {
+function EventIndexControllerFunction($stateParams, $state, EventFactory, LocationFactory) {
   this.events = EventFactory.query();
 }
 
-function EventNewControllerFunction($stateParams, $state, EventFactory) {
+function EventNewControllerFunction($stateParams, $state, EventFactory, LocationFactory) {
+  this.location = LocationFactory.get({id: $stateParams.id});
   this.event = new EventFactory();
   this.addEvent = function(){
+    this.event.location_id = $stateParams.id;
     this.event.$save(function(event){
       $state.go("eventShow", {id: location.id});
     })
   }
 }
 
-function EventEditControllerFunction($stateParams, $state, EventFactory) {
-  this.event = EventFactory.get({id: $stateParams.id});
+function EventEditControllerFunction($stateParams, $state, EventFactory, LocationFactory) {
+  let self = this;
+  this.event = EventFactory.get({id: $stateParams.id}, function(res) {
+    self.location = LocationFactory.get({id: res.location_id});
+  })
   this.updateEvent = function(){
     this.event.$update({id: $stateParams.id}, function(){
       $state.go("eventShow", {id: $stateParams.id});
@@ -269,9 +278,12 @@ function EventEditControllerFunction($stateParams, $state, EventFactory) {
     })
   }
 }
-//living within this
-function EventShowControllerFunction($stateParams, $state, EventFactory, CommentFactory) {
-  this.event = EventFactory.get({id: $stateParams.id});
+
+function EventShowControllerFunction($stateParams, $state, EventFactory, LocationFactory, CommentFactory) {
+  let self = this;
+  this.event = EventFactory.get({id: $stateParams.id}, function(res) {
+    self.location = LocationFactory.get({id: res.location_id});
+  })
   this.comment = new CommentsFactory();
   this.addComment = function(){
     this.photo.event_id = $stateParams.event_id;
@@ -281,7 +293,7 @@ function EventShowControllerFunction($stateParams, $state, EventFactory, Comment
   }
   this.comments= CommentFactory.query({event_id: $stateParams.id});
 }
-///// edit this
+
 // Photos Controllers
 angular.module("touristapp")
   .controller("PhotosIndexController", [
@@ -289,6 +301,7 @@ angular.module("touristapp")
     "$state",
     "PhotoFactory",
     "EventFactory",
+    "LocationFactory",
     PhotosIndexControllerFunction
   ])
   .controller("PhotoShowController", [
@@ -299,15 +312,16 @@ angular.module("touristapp")
   ])
 
 // Photos Controller Functions
-function PhotosIndexControllerFunction($stateParams, $state, PhotoFactory, EventFactory) {
+function PhotosIndexControllerFunction($stateParams, $state, PhotoFactory, EventFactory, LocationFactory) {
   let self = this;
   PhotoFactory.query({event_id: $stateParams.event_id}, function(res){
     self.photos = res;
     self.currentImage = self.photos[0];
   })
-  this.event = EventFactory.get({id: $stateParams.event_id});
-
-  // this.currentImageUrl = setUrl(this.currentImage.img_url)
+  EventFactory.get({id: $stateParams.event_id},function(res){
+    self.event = res;
+    self.location = LocationFactory.get({id: res.location_id});
+  })
   this.setCurrentImage = function(photo) {
     this.currentImage = photo;
   }
