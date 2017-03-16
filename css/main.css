@@ -260,16 +260,27 @@ h2 {
     text-shadow: 2px 2px 2px gray;
     width: 100%; }
 
-.location-events h2 {
-  text-align: left; }
-.location-events div {
-  width: 100%; }
-.location-events h4 {
-  font-family: "Lato", sans-serif; }
-.location-events img {
-  float: right;
-  height: 150px;
-  width: 150px; }
+.flex-box {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; }
+
+.event-img {
+  width: 10%;
+  height: 10%; }
+
+.event-info {
+  font-family: "Lato", sans-serif;
+  text-align: left;
+  width: 70%; }
+
+.location-events {
+  display: flex;
+  flex-wrap: wrap; }
+  .location-events img {
+    padding-top: 50px;
+    height: 150px;
+    width: 300px; }
 
 .location {
   width: 175px;
