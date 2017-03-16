@@ -7,9 +7,10 @@ let states = ["AL","AK","AZ","AR","CA","CO","CT","DC","DE","FL","GA","HI","ID","
 let countries = ["USA"];
 
 angular
-  .module("touristapp", [
+  .module("touristapp",[
     "ui.router",
-    "ngResource"
+    "ngResource",
+    "leaflet-directive"
   ])
   .config([
     "$stateProvider",
@@ -31,6 +32,7 @@ angular
     "$resource",
     CommentFactoryFunction
   ])
+
 
 // Routes
 function RouterFunction($stateProvider){
@@ -101,7 +103,6 @@ function RouterFunction($stateProvider){
       controller: "PhotoShowController",
     })
   }
-
 // Factory Functions
 
 function LocationFactoryFunction($resource) {
@@ -123,14 +124,12 @@ function PhotoFactoryFunction($resource) {
   })
 }
 
-// test function for comments
 function CommentFactoryFunction($resource) {
   return $resource("http://localhost:3000/events/:event_id/comments/:id", {}, {
     update: { method: "PUT" },
     query: { method: "GET", isArray: true}
   })
 }
-
 
 // Separating our controllers by data model since this might get long and ugly.
 angular.module("touristapp")
@@ -188,6 +187,7 @@ angular.module("touristapp")
   .controller("EventShowController", [
     "$stateParams",
     "$state",
+    "$scope",
     "EventFactory",
     "LocationFactory",
     "CommentFactory",
@@ -279,14 +279,14 @@ function EventEditControllerFunction($stateParams, $state, EventFactory, Locatio
   }
 }
 
-function EventShowControllerFunction($stateParams, $state, EventFactory, LocationFactory, CommentFactory) {
+function EventShowControllerFunction($stateParams, $state, $scope, EventFactory, LocationFactory, CommentFactory) {
   let self = this;
   EventFactory.get({id: $stateParams.id}, function(res) {
     self.event = res;
     self.location = LocationFactory.get({id: res.location_id});
     self.comments = CommentFactory.query({event_id: res.id});
-      console.log(self.comments, res.id);
-  })
+    console.log(self.comments, res.id);
+    })
   this.comment = new CommentFactory();
   this.addComment = function(){
     console.log($stateParams.id);
@@ -295,8 +295,25 @@ function EventShowControllerFunction($stateParams, $state, EventFactory, Locatio
       // $state.reload();
     })
   }
-
 }
+  // $.ajax({
+  //   type: "get",
+  //   url: url/?address=#{this.event.address},
+  //   dataType: "json"
+  // }).done(function(response) {
+  //   console.log(response)
+  // })
+  // angular.extend($scope, {
+  //   center: {
+  //       lat: 40.095,
+  //       lng: -3.823,
+  //       zoom: 4
+  //   },
+  //   defaults: {
+  //       scrollWheelZoom: false
+  //   }
+  // });
+
 
 // Photos Controllers
 angular.module("touristapp")
