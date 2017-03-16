@@ -49,17 +49,42 @@ h2 {
   }
 }
 
-.location-events {
-  h2 {
-    text-align: left;
-  }
-  div {
-    width: 100%;
-  }
-  h4 {
-    font-family: $body-font;
-  }
+.flex-box{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
+
+.event-img{
+width: 10%;
+height: 10%;
+}
+
+.event-info{
+font-family: $body-font;
+text-align: left;
+width: 70%;
+}
+
+.location-events {
+  display: flex;
+  flex-wrap: wrap;
+//   h2 {
+//     text-align: left;
+//   }
+//   div {
+//     width: 100%;
+//   }
+//   h4 {
+//     font-family: $body-font;
+//   }
+  img {
+//     // float: right;
+  padding-top: 50px;
+    height: 150px;
+    width: 300px;
+}
+ }
 
 .location {
   width: 175px;

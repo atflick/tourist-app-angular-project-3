@@ -12,13 +12,17 @@
 
 <section class="centered-container">
   <div class="flex-container location-events">
-    <div ng-repeat="event in vm.events | filter: {location_id: vm.location.id} | filter:filterByCategory" ui-sref="eventShow({id: event.id})">
+    <div class="flex-box" ng-repeat="event in vm.events | filter: {location_id: vm.location.id} | filter:filterByCategory" ui-sref="eventShow({id: event.id})">
+      <div class="event-info">
       <h2>{{event.name}}</h2>
       <h4><span>Address:</span> {{event.address}}</h4>
       <h4><span>Category:</span> {{vm.uppercase(event.category)}}</h4>
       <h4><span>Phone:</span> {{event.phone_number}}</h4>
       <h4><span>Website:</span> <a href="{{event.website_url}}">{{event.website_url}}</a></h4>
+      </div>
+      <div class="event-img">
       <img ng-src="{{event.img_url}}">
+    </div>
     </div>
   </div>
 

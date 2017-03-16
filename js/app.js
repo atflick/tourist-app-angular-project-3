@@ -7,7 +7,7 @@ let states = ["AL","AK","AZ","AR","CA","CO","CT","DC","DE","FL","GA","HI","ID","
 let countries = ["USA"];
 
 angular
-  .module("touristapp", [
+  .module("touristapp",[
     "ui.router",
     "ngResource"
   ])
@@ -27,6 +27,7 @@ angular
     "$resource",
     PhotoFactoryFunction
   ])
+
 
 // Routes
 function RouterFunction($stateProvider){
