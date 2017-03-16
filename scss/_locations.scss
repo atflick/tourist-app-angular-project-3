@@ -49,15 +49,50 @@ h2 {
   }
 }
 
+.flex-box{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.event-img {
+width: 40%;
+height: 100%;
+overflow: hidden;
+
+}
+
+.event-info {
+font-family: $body-font;
+text-align: left;
+width: 60%;
+}
+
 .location-events {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
   h2 {
     text-align: left;
-  }
-  div {
-    width: 100%;
+    padding-bottom: 0;
+    margin-bottom: 10px;
+    cursor: pointer;
   }
   h4 {
     font-family: $body-font;
+    text-transform: capitalize;
+    margin-bottom: 2px;
+  }
+  img {
+    // margin: 25px auto;
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+    border: 1px solid $lightgray;
+    border-radius: 5px;
+  }
+  a {
+    text-transform: lowercase;
   }
 }
 
@@ -69,8 +104,6 @@ h2 {
   cursor: pointer;
 }
 
-.flex-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+.blue-underline {
+  border-bottom: 1px solid $skyblue;
 }

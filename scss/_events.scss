@@ -3,6 +3,9 @@
   border: 1px solid $lightgray;
   padding:8px;
   border-radius: 5px;
+  background: #fff;
+  position: relative;
+  z-index: 1;
   h2 {
     width: 100%;
     border-bottom: 1px solid $skyblue;
@@ -36,14 +39,36 @@
 .event-form-col {
   height: 380px;
 }
+.comment-box {
+  z-index: 0;
+  background: #fff;
+  margin-top: -15px;
+  width: 100%;
+  border: 1px solid $lightgray;
+  border-radius: 5px;
+  padding: 8px;
+  h2 {
+    padding-top: 15px;
+    border-bottom: 1px solid $skyblue;
+    width: 100%;
+  }
+}
 
 .comments {
   height: auto;
+  overflow: hidden;
+  transition: height .8s ease;
+  padding: 20px 0;
 }
+
 .comment-collapsed {
-  height: 0;
+  height: 0px;
+  transition: height .8s ease;
+  padding: 0;
 }
+
 .comment-arrow {
-  height: 40px;
+  margin: 10px auto 5px auto;
+  width: 40px;
   cursor: pointer;
 }

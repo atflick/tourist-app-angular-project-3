@@ -260,12 +260,42 @@ h2 {
     text-shadow: 2px 2px 2px gray;
     width: 100%; }
 
-.location-events h2 {
-  text-align: left; }
-.location-events div {
-  width: 100%; }
-.location-events h4 {
-  font-family: "Lato", sans-serif; }
+.flex-box {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; }
+
+.event-img {
+  width: 40%;
+  height: 100%;
+  overflow: hidden; }
+
+.event-info {
+  font-family: "Lato", sans-serif;
+  text-align: left;
+  width: 60%; }
+
+.location-events {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px; }
+  .location-events h2 {
+    text-align: left;
+    padding-bottom: 0;
+    margin-bottom: 10px;
+    cursor: pointer; }
+  .location-events h4 {
+    font-family: "Lato", sans-serif;
+    text-transform: capitalize;
+    margin-bottom: 2px; }
+  .location-events img {
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+    border: 1px solid #c8c8c8;
+    border-radius: 5px; }
+  .location-events a {
+    text-transform: lowercase; }
 
 .location {
   width: 175px;
@@ -274,16 +304,17 @@ h2 {
   background-position: center;
   cursor: pointer; }
 
-.flex-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; }
+.blue-underline {
+  border-bottom: 1px solid #009cff; }
 
 .event-show {
   margin-top: 50px;
   border: 1px solid #c8c8c8;
   padding: 8px;
-  border-radius: 5px; }
+  border-radius: 5px;
+  background: #fff;
+  position: relative;
+  z-index: 1; }
   .event-show h2 {
     width: 100%;
     border-bottom: 1px solid #009cff;
@@ -310,14 +341,33 @@ h2 {
 .event-form-col {
   height: 380px; }
 
+.comment-box {
+  z-index: 0;
+  background: #fff;
+  margin-top: -15px;
+  width: 100%;
+  border: 1px solid #c8c8c8;
+  border-radius: 5px;
+  padding: 8px; }
+  .comment-box h2 {
+    padding-top: 15px;
+    border-bottom: 1px solid #009cff;
+    width: 100%; }
+
 .comments {
-  height: auto; }
+  height: auto;
+  overflow: hidden;
+  transition: height .8s ease;
+  padding: 20px 0; }
 
 .comment-collapsed {
-  height: 0; }
+  height: 0px;
+  transition: height .8s ease;
+  padding: 0; }
 
 .comment-arrow {
-  height: 40px;
+  margin: 10px auto 5px auto;
+  width: 40px;
   cursor: pointer; }
 
 .centered-container {
