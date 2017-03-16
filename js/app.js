@@ -295,7 +295,7 @@ function EventShowControllerFunction($stateParams, $state, $scope, EventFactory,
       // $state.reload();
     })
   }
-}
+
   // $.ajax({
   //   type: "get",
   //   url: url/?address=#{this.event.address},
@@ -303,17 +303,17 @@ function EventShowControllerFunction($stateParams, $state, $scope, EventFactory,
   // }).done(function(response) {
   //   console.log(response)
   // })
-  // angular.extend($scope, {
-  //   center: {
-  //       lat: 40.095,
-  //       lng: -3.823,
-  //       zoom: 4
-  //   },
-  //   defaults: {
-  //       scrollWheelZoom: false
-  //   }
-  // });
-
+  angular.extend($scope, {
+    center: {
+        lat: 40.095,
+        lng: -3.823,
+        zoom: 4
+    },
+    defaults: {
+        scrollWheelZoom: false
+    }
+  });
+}
 
 // Photos Controllers
 angular.module("touristapp")
