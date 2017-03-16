@@ -269,16 +269,27 @@ function EventEditControllerFunction($stateParams, $state, EventFactory, Locatio
 
 function EventShowControllerFunction($stateParams, $state, $scope, EventFactory, LocationFactory) {
   let self = this;
-  this.event = EventFactory.get({id: $stateParams.id}, function(res) {
+  EventFactory.get({id: $stateParams.id}, function(res) {
+    self.event = res;
     self.location = LocationFactory.get({id: res.location_id});
-  })
-  $.ajax({
-    type: "get",
-    url: url/?address=#{this.event.adress},
-    dataType: "json"
-  }).done(function(response) {
-    console.log(response)
-  })
+    self.comments = CommentFactory.query({event_id: res.id});
+    console.log(self.comments, res.id);
+    })
+  this.comment = new CommentFactory();
+  this.addComment = function(){
+       this.photo.event_id = $stateParams.event_id;
+       this.photo.$save({event_id: $stateParams.event_id},function(){
+         $state.reload();
+       })
+     }
+  }
+  // $.ajax({
+  //   type: "get",
+  //   url: url/?address=#{this.event.address},
+  //   dataType: "json"
+  // }).done(function(response) {
+  //   console.log(response)
+  // })
   angular.extend($scope, {
     center: {
         lat: 40.095,
@@ -289,7 +300,7 @@ function EventShowControllerFunction($stateParams, $state, $scope, EventFactory,
         scrollWheelZoom: false
     }
   });
-}
+
 
 // Photos Controllers
 angular.module("touristapp")
