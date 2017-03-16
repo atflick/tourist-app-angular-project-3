@@ -289,9 +289,10 @@ function EventShowControllerFunction($stateParams, $state, EventFactory, Locatio
   })
   this.comment = new CommentFactory();
   this.addComment = function(){
-    this.photo.event_id = $stateParams.event_id;
-    this.photo.$save({event_id: $stateParams.event_id},function(){
-      $state.reload();
+    console.log($stateParams.id);
+    this.comment.event_id = $stateParams.id;
+    this.comment.$save({event_id: $stateParams.id},function(){
+      // $state.reload();
     })
   }
 
@@ -355,22 +356,3 @@ function PhotoShowControllerFunction($stateParams, $state, PhotoFactory) {
 function setUrl(url) {
   return `url("${url}")`
 }
-
-/////Functions for event category selection boxes
-// function filterByCategory(event) {
-//   // Display the event if
-//   var displayEvent =
-//       // the event's category checkbox is checked (`filter[category]` is true)
-//       $scope.filter[event.category] ||   // or
-//
-//       // no checkbox is checked (all `filter[...]` are false)
-//       noFilter($scope.filter);
-//
-//   return showEvent;
-// };
-//
-// function noFilter(filterObj) {
-//   return Object.
-//     keys(filterObj).
-//     every(function (key) { return !filterObj[key]; });
-// }
