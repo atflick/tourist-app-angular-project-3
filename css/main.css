@@ -420,6 +420,10 @@ h2 {
   width: 425px;
   height: 100px; }
 
+.mapbox {
+  z-index: 3;
+  margin-top: -4px; }
+
 .centered-container {
   max-width: 800px;
   padding: 8px 8px;
