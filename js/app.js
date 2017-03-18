@@ -1,8 +1,4 @@
-// let locations = [
-//   {id: 1, city: "Washington", state: "DC", country: "USA", img_url: "", area: ""},
-//   {id: 2, city: "New York City", state: "NY", country: "USA", img_url: "", area: ""},
-//   {id: 3, city: "Boston", state: "MA", country: "USA", img_url: "", area: ""}
-// ]
+
 let states = ["AL","AK","AZ","AR","CA","CO","CT","DC","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
 let countries = ["USA"];
 
@@ -97,11 +93,6 @@ function RouterFunction($stateProvider){
       controller: "PhotosIndexController",
       controllerAs: "vm"
     })
-    .state("photosShow", {
-      url: "/photos/show/:id",
-      templateUrl: "js/ng-views/photos/show.html",
-      controller: "PhotoShowController",
-    })
   }
 // Factory Functions
 
@@ -136,6 +127,7 @@ angular.module("touristapp")
   .controller("WelcomeController", [
     WelcomeControllerFunction
   ])
+
 // Location Controllers
 angular.module("touristapp")
   .controller("LocationIndexController", [
@@ -285,11 +277,9 @@ function EventShowControllerFunction($stateParams, $state, $scope, EventFactory,
     self.event = res;
     self.location = LocationFactory.get({id: res.location_id});
     self.comments = CommentFactory.query({event_id: res.id});
-    console.log(self.comments, res.id);
     })
   this.comment = new CommentFactory();
   this.addComment = function(){
-    console.log($stateParams.id);
     this.comment.event_id = $stateParams.id;
     this.comment.$save({event_id: $stateParams.id},function(){
       $state.reload();
@@ -303,6 +293,7 @@ function EventShowControllerFunction($stateParams, $state, $scope, EventFactory,
   // }).done(function(response) {
   //   console.log(response)
   // })
+  // Map tool
   angular.extend($scope, {
     center: {
         lat: 35.09,
